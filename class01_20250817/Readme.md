@@ -7,6 +7,5 @@
 	 - 2.1 [UV Installation](./02_uv/00_uv_installation/readme.md)
 	 - 2.2 [Simple Application with `uv`](./02_uv/01_simple_application/)
 	 - 2.3 [Packaged Application with `uv`](./02_uv/02_packaged_application/)
-
+3. [Traditional Software, AI Models, and LLMs](./03_traditional_ai_llms/README.md)
 ---
-Last updated: 2025-08-15

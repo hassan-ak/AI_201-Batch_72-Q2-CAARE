@@ -7,7 +7,6 @@ This table will be updated as new classes are added. Each row lists the class da
 
 | Class | Date (YYYY-MM-DD) | Primary Topics |
 |-------|-------------------|----------------|
-| [01](class01_20250817/) | 2025-08-17 | [The Rise of AI Agents](class01_20250817/01_The_Rise_of_AI_Agents/) <br> [uv Overview](class01_20250817/01_uv/) <br> [uv Installation](class01_20250817/01_uv/00_uv_installation/) <br> [uv Simple Application](class01_20250817/01_uv/01_simple_application/) <br> [uv Packaged Application](class01_20250817/01_uv/02_packaged_application/) |
+| [01](class01_20250817/) | 2025-08-17 | [The Rise of AI Agents](class01_20250817/01_The_Rise_of_AI_Agents/) <br> [uv Overview](class01_20250817/02_uv/) <br> [uv Installation](class01_20250817/02_uv/00_uv_installation/) <br> [uv Simple Application](class01_20250817/02_uv/01_simple_application/) <br> [uv Packaged Application](class01_20250817/02_uv/02_packaged_application/) <br> [Traditional Software, AI Models, and LLMs](class01_20250817/03_traditional_ai_llms) |
 
 ---
-Last updated: 2025-08-15
