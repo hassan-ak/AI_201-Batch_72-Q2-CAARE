@@ -14,4 +14,7 @@
 5. [Programming Language, Library, Framework, SDK](./05-lang-lib-fw-sdk/README.md)
 6. [How to Get OpenAI API Key and Gemini API Key](./06_get_api_key/readme.md)
 7. [Getting Started with OpenAI Agents SDK](./07-getting-started-openai-agents-sdk/README.md)
+	- 7.1 [Hello Agent - Simple App](./07-getting-started-openai-agents-sdk/01_sdk_simple_app/)
+	- 7.2 [Hello Agent - Packaged App](./07-getting-started-openai-agents-sdk/02_sdk_packaged_app/)
+
 ---
