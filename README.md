@@ -1,5 +1,5 @@
-# AI_201-Batch_72-Q2-CAARE
-AI-201: Fundamentals of Agentic AI
+# AI-201: Fundamentals of Agentic AI (Batch_72-Q2-CAARE)
+
 
 ## Course Table of Contents
 
