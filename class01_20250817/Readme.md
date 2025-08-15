@@ -13,4 +13,5 @@
    - 4.2 [APIs — Hands‑on with Python](./04_what_is_api/api_basics_demo.ipynb)
 5. [Programming Language, Library, Framework, SDK](./05-lang-lib-fw-sdk/README.md)
 6. [How to Get OpenAI API Key and Gemini API Key](./06_get_api_key/readme.md)
+7. [Getting Started with OpenAI Agents SDK](./07-getting-started-openai-agents-sdk/README.md)
 ---
