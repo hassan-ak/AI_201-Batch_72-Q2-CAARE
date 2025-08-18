@@ -35,11 +35,13 @@ This table will be updated as new classes are added. Each row lists the class da
                     <a href="class01_20250817/03_traditional_ai_llms">Traditional Software, AI Models, and
                         LLMs</a><br />
                 </td>
+                <td></td>
             </tr>
             <tr>
                 <td>
                     <a href="class01_20250817/04_getting_started_with_n8n/">Getting Started with n8n</a>
                 </td>
+                <td></td>
         </tbody>
     </table>
 ---
