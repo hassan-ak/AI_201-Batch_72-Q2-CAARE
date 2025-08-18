@@ -5,16 +5,7 @@
 1. [The Rise of AI Agents](./01_The_Rise_of_AI_Agents/Readme.md)
 2. [`uv`: The Unified Python Package & Project Manager](./02_uv/README.md)
    - 2.1 [UV Installation](./02_uv/00_uv_installation/readme.md)
-   - 2.2 [Simple Application with `uv`](./02_uv/01_simple_application/)
-   - 2.3 [Packaged Application with `uv`](./02_uv/02_packaged_application/)
 3. [Traditional Software, AI Models, and LLMs](./03_traditional_ai_llms/README.md)
-4. What is API?
-   - 4.1 [Understanding APIs](./04_what_is_api/README.md)
-   - 4.2 [APIs — Hands‑on with Python](./04_what_is_api/api_basics_demo.ipynb)
-5. [Programming Language, Library, Framework, SDK](./05-lang-lib-fw-sdk/README.md)
-6. [How to Get OpenAI API Key and Gemini API Key](./06_get_api_key/readme.md)
-7. [Getting Started with OpenAI Agents SDK](./07-getting-started-openai-agents-sdk/README.md)
-	- 7.1 [Hello Agent - Simple App](./07-getting-started-openai-agents-sdk/01_sdk_simple_app/)
-	- 7.2 [Hello Agent - Packaged App](./07-getting-started-openai-agents-sdk/02_sdk_packaged_app/)
+4. [Getting Started with n8n](./04_getting_started_with_n8n/Readme.md)
 
 ---

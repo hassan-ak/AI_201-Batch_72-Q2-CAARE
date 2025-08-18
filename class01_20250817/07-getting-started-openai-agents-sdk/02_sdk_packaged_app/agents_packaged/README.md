@@ -1,1 +1,0 @@
-# Hello Agent (uv packaged app)

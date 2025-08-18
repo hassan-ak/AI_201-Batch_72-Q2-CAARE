@@ -107,7 +107,7 @@ flowchart LR
 - These networks enable AI to recognize images, understand speech, and learn from data.
 
 ```mermaid
-graph LR
+graph TB
     subgraph NeuralNetwork
         Input1(( )) --> H1(( ))
         Input2(( )) --> H1

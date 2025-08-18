@@ -1,1 +1,0 @@
-# Simple Application with `uv`

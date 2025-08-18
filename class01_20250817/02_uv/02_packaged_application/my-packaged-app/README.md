@@ -1,1 +1,0 @@
-# Packaged Application with `uv`
