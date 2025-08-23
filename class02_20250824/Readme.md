@@ -14,5 +14,6 @@
 5. [Getting Started with OpenAI Agents SDK](./05-getting-started-openai-agents-sdk/README.md)
 	- 5.1 [Hello Agent - Simple App](./05-getting-started-openai-agents-sdk/01_sdk_simple_app/)
 	- 5.2 [Hello Agent - Packaged App](./05-getting-started-openai-agents-sdk/02_sdk_packaged_app/)
+6. [Async Programming](./06_aysnc_programming)
 
 ---
