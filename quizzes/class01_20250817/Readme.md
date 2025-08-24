@@ -4,8 +4,6 @@ A concise multiple-choice quiz covering ALL major topics from this session: AI e
 
 Instructions: Choose the single best answer for each question. (Answers at end.)
 
----
-
 ## Quiz
 
 1. The three core abilities AI systems were described as developing are:  
@@ -188,8 +186,6 @@ Instructions: Choose the single best answer for each question. (Answers at end.)
     C. Avoid vertical specialization  
     D. Ignore collaboration
 
----
-
 ## Answer Key
 
 |   Q | A   |   Q | A   |   Q | A   |   Q | A   |   Q | A   |   Q | A   |
@@ -199,8 +195,6 @@ Instructions: Choose the single best answer for each question. (Answers at end.)
 |  13 | A   |  14 | B   |  15 | B   |  16 | B   |  17 | B   |  18 | A   |
 |  19 | B   |  20 | B   |  21 | B   |  22 | B   |  23 | A   |  24 | B   |
 |  25 | B   |  26 | B   |  27 | B   |  28 | B   |  29 | B   |  30 | B   |
-
----
 
 ## Topic Coverage Map
 
