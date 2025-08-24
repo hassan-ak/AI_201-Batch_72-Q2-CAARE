@@ -44,18 +44,18 @@ This table will be updated as new classes are added. Each row lists the class da
                 <td></td>
             </tr>
             <tr>
-                <td rowspan="3"><a href="class01_20250817/">02</a></td>
-                <td rowspan="3">2025-08-24</td>
+                <td rowspan="4"><a href="class02_20250824/">02</a></td>
+                <td rowspan="4">2025-08-24</td>
                  <td rowspan="3">
                     <a href="class02_20250824/01_uv/">uv Overview</a>
                 </td>
                 <td>
-                    <a href="class02_20250824//01_uv/00_uv_installation/">uv Installation</a><br />
+                    <a href="class02_20250824/01_uv/00_uv_installation/">uv Installation</a><br />
                 </td>
             </tr>
             <tr>
                  <td>
-                    <a href="class02_20250824//01_uv/01_simple_application/">Simple Application</a>
+                    <a href="class02_20250824/01_uv/01_simple_application/">Simple Application</a>
                 </td>
                 <td></td>
             </tr>
@@ -64,6 +64,14 @@ This table will be updated as new classes are added. Each row lists the class da
                     <a href="class02_20250824/01_uv/02_packaged_application/">Packaged Application</a>
                 </td>
                 <td></td>
+            </tr>
+            <tr>
+                 <td >
+                    <a href="class02_20250824/02_n8n_basics/">n8n Quick Start Tutorial</a>
+                </td>
+                <td>
+                    <a href="class02_20250824/02_n8n_basics/weekly_solar_flare_alert/">Weekly Solar Flare Alert</a><br />
+                </td>
             </tr>
         </tbody>
     </table>

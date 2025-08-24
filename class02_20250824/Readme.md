@@ -6,5 +6,7 @@
    - 1.1 [UV Installation](./01_uv/00_uv_installation/readme.md)
    - 1.2 [Simple Application with `uv`](./01_uv/01_simple_application/)
    - 1.3 [Packaged Application with `uv`](./01_uv/02_packaged_application/)
+2. [n8n Quick Start Tutorial](./02_n8n_basics/)
+   - 2.1 [Weekly Solar Flare Alert](./02_n8n_basics/weekly_solar_flare_alert/)
 
 ---
