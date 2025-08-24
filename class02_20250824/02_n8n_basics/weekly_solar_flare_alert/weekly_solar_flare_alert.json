@@ -1,0 +1,185 @@
+{
+  "name": "weekly_solar_flare_alert",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d706d226-e8d5-41b0-8005-0349f9032098",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "resource": "donkiSolarFlare",
+        "additionalFields": {
+          "startDate": "={{ $today.minus(3, \"month\") }}"
+        }
+      },
+      "type": "n8n-nodes-base.nasa",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2accda72-9271-44a8-b027-3d06194145a4",
+      "name": "Get a DONKI solar flare",
+      "credentials": {
+        "nasaApi": {
+          "id": "qE77nvBGVdNnotDe",
+          "name": "NASA account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Weekly Solar Flare Alert\n\nRuns every Monday 09:00. Fetch last 3 months DONKI solar flares; if class contains “X” send major alert, else minor alert (Postbin)",
+        "height": 208
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -288,
+        -192
+      ],
+      "typeVersion": 1,
+      "id": "16da6460-e744-4314-b456-2dd89d720f74",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1755707717157-1876778414007",
+        "binContent": "=There was a minor solar flare of class {{$json[\"classType\"]}}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.postBin",
+      "typeVersion": 1,
+      "position": [
+        624,
+        96
+      ],
+      "id": "fb7aaae4-c374-41ca-851b-d86f96e927e4",
+      "name": "Postbin (Minor)"
+    },
+    {
+      "parameters": {
+        "resource": "request",
+        "operation": "send",
+        "binId": "1755707717157-1876778414007",
+        "binContent": "=There was a major solar flare of class {{$json[\"classType\"]}}",
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.postBin",
+      "typeVersion": 1,
+      "position": [
+        624,
+        -64
+      ],
+      "id": "60f6156c-ba80-4199-a938-e5c6a9d1f56c",
+      "name": "Postbin (Major)"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a389ac83-bbb4-448d-bafe-af8685f1aebb",
+              "leftValue": "={{ $json.classType }}",
+              "rightValue": "X",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "461e8226-774d-4019-9851-b531097d7f7d",
+      "name": "If (Major or Minor)"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get a DONKI solar flare",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a DONKI solar flare": {
+      "main": [
+        [
+          {
+            "node": "If (Major or Minor)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If (Major or Minor)": {
+      "main": [
+        [
+          {
+            "node": "Postbin (Major)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Postbin (Minor)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "3135b6de-91d6-4123-828f-1f761c5fdcc4",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fd5a68f0c752ba0d64fcc13e181b705560ebcd91b307ae97c92329997aaef117"
+  },
+  "id": "I1ANSomI5maACXrz",
+  "tags": []
+}
