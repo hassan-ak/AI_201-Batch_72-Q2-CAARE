@@ -1,0 +1,19 @@
+[project]
+name = "async-programming"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Hassan Ali Khan", email = "73381969+hassan-ak@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+run-sync = "async_programming.main:run_sync_main"
+run-async = "async_programming.main:run_async_main"
+run-module = "async_programming.main:run_module"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
