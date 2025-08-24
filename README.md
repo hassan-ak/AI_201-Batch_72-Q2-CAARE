@@ -20,7 +20,6 @@ This table will be updated as new classes are added. Each row lists the class da
                 <td>
                     <a href="class01_20250817/01_The_Rise_of_AI_Agents/">The Rise of AI Agents</a>
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td>
@@ -35,13 +34,11 @@ This table will be updated as new classes are added. Each row lists the class da
                     <a href="class01_20250817/03_traditional_ai_llms">Traditional Software, AI Models, and
                         LLMs</a><br />
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td>
                     <a href="class01_20250817/04_getting_started_with_n8n/">Getting Started with n8n</a>
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td rowspan="4"><a href="class02_20250824/">02</a></td>
@@ -57,13 +54,11 @@ This table will be updated as new classes are added. Each row lists the class da
                  <td>
                     <a href="class02_20250824/01_uv/01_simple_application/">Simple Application</a>
                 </td>
-                <td></td>
             </tr>
             <tr>
                  <td>
                     <a href="class02_20250824/01_uv/02_packaged_application/">Packaged Application</a>
                 </td>
-                <td></td>
             </tr>
             <tr>
                  <td >
