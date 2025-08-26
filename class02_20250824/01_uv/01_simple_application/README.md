@@ -55,6 +55,7 @@ Before creating a simple application, ensure:
    ```bash
    uv init my-simple-app
    cd my-simple-app
+   code .
    ```
 
 This will:
