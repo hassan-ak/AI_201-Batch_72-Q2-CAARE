@@ -71,6 +71,47 @@ This table will be updated as new classes are added. Each row lists the class da
                     <a href="class02_20250824/02_n8n_basics/weekly_solar_flare_alert/">Weekly Solar Flare Alert</a><br />
                 </td>
             </tr>
+            <tr>
+                <td rowspan="6"><a href="class03_20250831/">03</a></td>
+                <td rowspan="6">2025-08-31</td>
+                 <td>
+                    <a href="class03_20250831/01_what_is_api/">What is API</a>
+                </td>
+                <td>
+                    <a href="class03_20250831/01_what_is_api/api_basics_demo.ipynb">API basic Demo</a><br />
+                </td>
+            </tr>
+            <tr>
+                 <td>
+                    <a href="class03_20250831/02-lang-lib-fw-sdk/">Programming Language, Library, Framework, SDK</a>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                 <td>
+                    <a href="class03_20250831/03_get_api_key/">Get Gemini API Key</a>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                 <td rowspan="2">
+                    <a href="class03_20250831/04-getting-started-openai-agents-sdk/">Getting Started with OpenAI Agent SDK</a>
+                </td>
+                <td>
+                    <a href="class03_20250831/04-getting-started-openai-agents-sdk/01_sdk_simple_app/">Hello Agent (Simple App)</a><br />
+                </td>
+            </tr>
+             <tr>
+                 <td >
+                    <a href="class03_20250831/04-getting-started-openai-agents-sdk/02_sdk_packaged_app/">Hello Agent (Packaged App)</a>
+                </td>
+            </tr>
+             <tr>
+                 <td>
+                    <a href="class03_20250831/05_using_whatsapp_in_n8n_workflow/">Using Whatsapp in n8n Workflow</a>
+                </td>
+                <td></td>
+            </tr>
         </tbody>
     </table>
 ---
