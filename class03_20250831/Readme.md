@@ -1,4 +1,4 @@
-# Class 02 - 2025/08/24 - Batch 72 - Q2 (Certified Agentic AI and Robotic Engineer)
+# Class 03 - 2025/08/31 - Batch 72 - Q2 (Certified Agentic AI and Robotic Engineer)
 
 ## Table of Contents
 
@@ -10,6 +10,5 @@
 4. [Getting Started with OpenAI Agents SDK](./04-getting-started-openai-agents-sdk/README.md)
 	- 4.1 [Hello Agent - Simple App](./04-getting-started-openai-agents-sdk/01_sdk_simple_app/)
 	- 4.2 [Hello Agent - Packaged App](./04-getting-started-openai-agents-sdk/02_sdk_packaged_app/)
-5. [Async Programming](./05_aysnc_programming)
 
 ---
