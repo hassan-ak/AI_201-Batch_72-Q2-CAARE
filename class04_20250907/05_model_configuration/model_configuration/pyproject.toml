@@ -1,0 +1,23 @@
+[project]
+name = "model-configuration"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Hassan Ali Khan", email = "73381969+hassan-ak@users.noreply.github.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "openai-agents>=0.2.11",
+    "python-dotenv>=1.1.1",
+]
+
+[project.scripts]
+run-global-config = "model_configuration.main:run_global_config"
+run-agent-config = "model_configuration.main:run_agent_config"
+run-runner-config = "model_configuration.main:run_runner_config"
+run-debug-mode = "model_configuration.main:run_debug_mode"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
