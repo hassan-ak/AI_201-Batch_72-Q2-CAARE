@@ -9,7 +9,7 @@ from agents import (
 import time
 
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
-API_KEY = "AIzaSyD_dHha9yLfp6kxQ9aFU_KlMQM2GMWxWpQ"
+API_KEY = "your_api_key"
 MODEL_NAME = "gemini-2.5-flash"
 
 external_client = AsyncOpenAI(base_url=BASE_URL, api_key=API_KEY)
