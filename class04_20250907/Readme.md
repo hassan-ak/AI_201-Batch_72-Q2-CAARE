@@ -3,5 +3,6 @@
 ## Table of Contents
 
 1. [Async Programming](./01_aysnc_programming)
+2. [Sync vs Async Agent Execution](./02_sync_vs_async_agent_execution/)
 
 ---
