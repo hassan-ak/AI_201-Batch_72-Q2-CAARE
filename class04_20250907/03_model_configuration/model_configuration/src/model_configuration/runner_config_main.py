@@ -25,10 +25,6 @@ MODEL_NAME = "gemini-2.5-flash"
 # Default client
 external_client = AsyncOpenAI(base_url=BASE_URL, api_key=API_KEY)
 
-set_default_openai_client(external_client)
-
-set_tracing_disabled(True)
-
 # A concrete model object to supply via RunConfig
 model = OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=external_client)
 

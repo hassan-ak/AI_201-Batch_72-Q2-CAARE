@@ -36,9 +36,6 @@ set_default_openai_client(external_client)
 
 set_tracing_disabled(True)
 
-# Turn on verbose logs to stdout (great for debugging)
-enable_verbose_stdout_logging()
-
 # Agent uses a concrete model object
 agent = Agent(
     name="Test Agent",
@@ -48,6 +45,9 @@ agent = Agent(
 
 
 def debug_mode_main():
+    # Turn on verbose logs to stdout (great for debugging)
+    enable_verbose_stdout_logging()
+    
     """Run a sync prompt with verbose logging enabled."""
     result = Runner.run_sync(agent, "What is the capital of France?")
     print(result.final_output)
