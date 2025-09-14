@@ -7,9 +7,8 @@ Most people are using AI like ChatGPT entirely wrong. They ask broken questions 
 ## Why Prompting Skills Matter
 
 In the near future, professionals who master AI prompting will have a significant advantage. We're already seeing:
-
 - Doctors using AI to help diagnose patients
-- Engineers prompting AI to solve complex problems
+- Engineers prompting AI to solve complex problems  
 - Lawyers using AI to speed up research and catch missed details
 
 Instead of waiting to be replaced by AI, learn to work with it effectively.
@@ -25,19 +24,16 @@ This framework works across all major AI models (ChatGPT, Gemini, Claude) and is
 **The Solution:** Every great prompt starts with a clear, direct command using action verbs.
 
 **Bad Example:**
-
 ```
 Give me investing advice
 ```
 
 **Good Example:**
-
 ```
 Recommend a diversified investment strategy for a moderate risk investor saving for a home within 5 years
 ```
 
 **Key Principles:**
-
 - Use strong action verbs: analyze, create, design, recommend, generate, evaluate
 - Avoid weak words like "give" or "help"
 - Be specific about what you want
@@ -48,25 +44,21 @@ Recommend a diversified investment strategy for a moderate risk investor saving 
 **The Rule:** AI can take your prompt in any direction if you let it. Your job is to narrow it down with the right background, constraints, and goals.
 
 **Bad Example:**
-
 ```
 Recommend a diversified investment strategy for me
 ```
 
 **Good Example:**
-
 ```
 Recommend an investment strategy for a 32-year-old with moderate risk tolerance, earning $90,000/year, saving to buy a home in 5 years
 ```
 
 **The Rule of Three Framework:**
-
 - **Who:** Age, profession, experience level, situation
 - **What:** Specific goal, constraints, requirements
 - **When:** Timeline, deadlines, urgency
 
 **Context Scaling:**
-
 - Simple requests (restaurant recommendation): Minimal context needed
 - Complex projects (business plan): Extensive context required
 - Life-changing decisions: Maximum context investment
@@ -78,13 +70,11 @@ Recommend an investment strategy for a 32-year-old with moderate risk tolerance,
 **The Solution:** Tell the AI exactly how to think and respond.
 
 **Basic Example:**
-
 ```
 List the asset categories, explain the percent allocation for each, and briefly justify the rationale behind each choice
 ```
 
 **Advanced Formatting Options:**
-
 - "Format this as a screenshotable Apple Notes format"
 - "Give me a copy-and-pasteable asset I can send to my partner"
 - "Respond in PDF format for saving and sharing"
@@ -92,7 +82,6 @@ List the asset categories, explain the percent allocation for each, and briefly 
 - "Structure this as an interactive checklist"
 
 **Key Questions to Ask Yourself:**
-
 - Do I want this in a table, graph, or list format?
 - Will I need to share this with others?
 - How will I use this information next?
@@ -102,20 +91,17 @@ List the asset categories, explain the percent allocation for each, and briefly 
 **The Power:** The way you prompt doesn't just affect what AI says—it affects who it becomes.
 
 **Basic Example:**
-
 ```
 You are a certified financial advisor with 15 years of experience specializing in personal finance and mid-term investment planning
 ```
 
 **Role Variations by Field:**
-
 - **Finance:** "Certified financial advisor with 15 years experience in personal finance"
-- **Marketing:** "Senior marketing strategist with expertise in digital campaigns"
+- **Marketing:** "Senior marketing strategist with expertise in digital campaigns"  
 - **Technology:** "Senior software architect with 10 years in enterprise systems"
 - **Legal:** "Corporate lawyer with 10 years experience in contract law"
 
 **Style and Tone Modifiers:**
-
 - "Be brutally honest and conservative in your advice"
 - "Take a creative and innovative approach"
 - "Provide practical, actionable recommendations"
@@ -126,16 +112,14 @@ You are a certified financial advisor with 15 years of experience specializing i
 **The Goal:** Organize information in a way that's immediately useful and actionable.
 
 **Example Structure:**
-
 ```
 Format the response as a clear list with bullet points under three sections:
 1. Asset Allocation (with percentages)
-2. Rationale for Each Category
+2. Rationale for Each Category  
 3. Risk Considerations
 ```
 
 **Popular Formatting Options:**
-
 - Numbered lists for sequential steps
 - Bullet points for equal-weight items
 - Tables for comparing options
@@ -151,7 +135,6 @@ Ask me 10 questions that will help you tailor this strategy even more
 ```
 
 **Why This Works:**
-
 - AI identifies gaps in your prompt that you missed
 - Provides nuanced questions you hadn't considered
 - Leads to dramatically better, more personalized results
@@ -159,12 +142,11 @@ Ask me 10 questions that will help you tailor this strategy even more
 **The Advanced Question Strategy:**
 
 1. **Round 1:** "Ask me 10 questions to tailor this better"
-2. **Round 2:** "Based on my answers, ask 10 more questions that fill in gaps"
+2. **Round 2:** "Based on my answers, ask 10 more questions that fill in gaps"  
 3. **Round 3:** "Give me 10 more detailed questions"
 4. **Stop when:** AI starts repeating questions (means it has enough info)
 
 **Pro Tips:**
-
 - Use voice memos for answering questions (faster and more natural)
 - For major decisions: Go through 20-30 questions
 - For simple tasks: 3-5 questions are sufficient
@@ -176,7 +158,7 @@ Here's how the full framework looks in practice:
 
 ```
 **COMMAND:**
-Recommend a comprehensive investment strategy
+Recommend a comprehensive investment strategy 
 
 **CONTEXT:**
 for a 32-year-old software engineer with moderate risk tolerance, earning $90,000/year, with $25,000 in savings, looking to buy a home in 5 years while also building long-term wealth
@@ -202,25 +184,21 @@ Ask me 10 questions that will help you tailor this strategy even more specifical
 ## Best Practices and Pro Tips
 
 ### Model Selection
-
 - **ChatGPT & Gemini:** Best for this framework (battle-tested)
 - **Claude:** Works well with slight modifications
 - **Specialized Models:** May require framework adjustments
 
 ### Context Balancing
-
 - **High-Stakes Decisions:** Invest heavily in context and questions
 - **Daily Tasks:** Use abbreviated version with 3-5 elements
 - **Creative Projects:** Emphasize roleplay and formatting elements
 
 ### Voice Memo Strategy
-
 - Use your phone's voice memo feature for answering AI questions
 - Speak naturally and conversationally
 - Let AI ask follow-up questions until it stops finding new angles
 
 ### Iteration Approach
-
 1. Start with basic framework
 2. Let AI ask questions and answer them
 3. Refine the prompt based on gaps identified
@@ -239,7 +217,7 @@ Ask me 10 questions that will help you tailor this strategy even more specifical
 This framework scales from simple daily tasks to complex professional projects:
 
 - **Personal:** Meal planning, workout routines, travel itineraries
-- **Professional:** Business plans, marketing strategies, technical documentation
+- **Professional:** Business plans, marketing strategies, technical documentation  
 - **Creative:** Content scripts, design briefs, storytelling frameworks
 - **Educational:** Study guides, research plans, learning curricula
 

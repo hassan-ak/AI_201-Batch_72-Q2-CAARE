@@ -1,20 +1,21 @@
 # Prompt and Context Engineering Tutorial for Beginners: A Comprehensive Guide to Effective AI Communication
 
+**[Panaversity YouTube Class Playlist](https://www.youtube.com/playlist?list=PL0vKVrkG4hWpeKmZyCRTpfRiLQ13b5uRX)**
+
 <img src="stats.jpg" alt="llm_share" width="300"/>
 
 **Key Takeaways**
-
 - With 46.59B visits, ChatGPT accounts for more than 83% of total traffic among the top 10 chatbots.
 - The second most-used chatbot, DeepSeek at 2.74B visits, has barely 6% of ChatGPT’s traffic.
 - While traffic is concentrated, the list includes a mix of U.S., Chinese, and European players.
 
 ## Understand the Power: Nano Banana and Veo 3
 
-To understand the power of LLMs and prompt engineering go through these tutorials:
+To understand the power of LLMs and prompt engineering go through these tutorials: 
 
-- **[Nano Banana Tutorial: How to Use Google’s AI Image Editing Model in 2025](https://www.anangsha.me/nano-banana-tutorial-how-to-use-googles-ai-image-editing-model-in-2025/)**
-- **[Google's Veo 3: A Guide With Practical Examples](https://www.datacamp.com/tutorial/veo-3)**
-- **[How to create effective prompts with Veo 3](https://deepmind.google/models/veo/prompt-guide/)**
+* **[Nano Banana Tutorial: How to Use Google’s AI Image Editing Model in 2025](https://www.anangsha.me/nano-banana-tutorial-how-to-use-googles-ai-image-editing-model-in-2025/)**
+* **[Google's Veo 3: A Guide With Practical Examples](https://www.datacamp.com/tutorial/veo-3)**
+* **[How to create effective prompts with Veo 3](https://deepmind.google/models/veo/prompt-guide/)**
 
 ## Which is the best LLM?
 
@@ -37,7 +38,7 @@ Here’s a reusable “Prompt Coach” prompt you can keep handy. You’ll paste
 Copy Paste this in your LLM:
 
 ```
-You are my Prompt Coach. I will give you a rough or unclear prompt.
+You are my Prompt Coach. I will give you a rough or unclear prompt. 
 Your task is to:
 1. Clarify it
 2. Add missing context
@@ -67,7 +68,6 @@ Here’s my rough prompt: [INSERT YOUR PROMPT HERE]
 Prompt engineering is the art and science of crafting instructions that guide AI language models to produce desired outputs. Think of it as learning to communicate effectively with AI systems to achieve specific goals.
 
 **Why is it important?**
-
 - You don't need to be a programmer to use AI effectively
 - Good prompts can dramatically improve AI performance
 - It's an iterative skill that improves with practice
@@ -75,14 +75,14 @@ Prompt engineering is the art and science of crafting instructions that guide AI
 
 ## Prompt engineering vs. context engineering
 
-**Prompt engineering** = crafting the _instruction_ you give the model.
-**Context engineering** = curating the _information_ the model can see when following that instruction.
+**Prompt engineering** = crafting the *instruction* you give the model.
+**Context engineering** = curating the *information* the model can see when following that instruction.
 
 ### Quick contrast
 
 | Aspect          | Prompt engineering                                                       | Context engineering                                                                      |
 | --------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| Goal            | Tell the model _how_ to behave and _what_ to produce                     | Give the model the _facts/examples_ it should rely on                                    |
+| Goal            | Tell the model *how* to behave and *what* to produce                     | Give the model the *facts/examples* it should rely on                                    |
 | Levers          | Wording, structure, roles, constraints, output schema, few-shot examples | Retrieval (RAG), documents, knowledge bases, tools/APIs, memory, state across turns      |
 | Typical changes | “Be concise. Return valid JSON with fields X/Y/Z.”                       | “Attach the company glossary, latest policy PDF, and retrieved passages for this query.” |
 | Failure mode    | Vague instructions → messy/incorrect format                              | Missing/irrelevant info → hallucinations/outdated answers                                |
@@ -90,54 +90,65 @@ Prompt engineering is the art and science of crafting instructions that guide AI
 
 ### How they work together
 
-- Start with a **good prompt**: clear task, constraints, and an **output contract** (e.g., JSON schema).
-- Then **ground it with context**: supply only the _most relevant_ passages, tables, and tool results.
-- The prompt guides _behavior_; the context supplies _knowledge_. You usually need both.
+* Start with a **good prompt**: clear task, constraints, and an **output contract** (e.g., JSON schema).
+* Then **ground it with context**: supply only the *most relevant* passages, tables, and tool results.
+* The prompt guides *behavior*; the context supplies *knowledge*. You usually need both.
 
 ### Concrete examples
 
 1. **Invoice → JSON extractor**
 
-- _Prompt engineering_: “Extract fields {vendor, date, total}. Return JSON only. If a field is missing, use null.”
-- _Context engineering_: Provide a few labeled examples and attach the vendor’s invoice spec retrieved via embeddings.
+* *Prompt engineering*: “Extract fields {vendor, date, total}. Return JSON only. If a field is missing, use null.”
+* *Context engineering*: Provide a few labeled examples and attach the vendor’s invoice spec retrieved via embeddings.
 
 2. **Policy Q\&A bot**
 
-- _Prompt engineering_: “Answer using the attached passages; if unsure, say ‘Not in policy.’ Cite section IDs.”
-- _Context engineering_: RAG over your policy repo (chunking, metadata filters like `department=HR`, freshness boosts), plus a recency cache for updates.
+* *Prompt engineering*: “Answer using the attached passages; if unsure, say ‘Not in policy.’ Cite section IDs.”
+* *Context engineering*: RAG over your policy repo (chunking, metadata filters like `department=HR`, freshness boosts), plus a recency cache for updates.
 
 3. **Agentic workflow**
 
-- _Prompt engineering_: Tool-use instructions and function signatures.
-- _Context engineering_: Feed tool responses (DB rows, API payloads) back into the context window each step; maintain short-term memory/state.
+* *Prompt engineering*: Tool-use instructions and function signatures.
+* *Context engineering*: Feed tool responses (DB rows, API payloads) back into the context window each step; maintain short-term memory/state.
 
 ### Practical tips
 
-- Keep prompts **short, specific, and testable**; define output schemas.
-- Prefer **few-shot** examples only when they generalize; otherwise move them into **retrieval**.
-- For context: optimize **chunking**, **ranking**, **deduping**, and **token budgets**; log what was retrieved for each answer.
-- Add **citations** and “answer only from context” instructions when correctness matters.
-- Evaluate both layers separately: prompt A/B tests and retrieval quality (precision/recall, groundedness).
+* Keep prompts **short, specific, and testable**; define output schemas.
+* Prefer **few-shot** examples only when they generalize; otherwise move them into **retrieval**.
+* For context: optimize **chunking**, **ranking**, **deduping**, and **token budgets**; log what was retrieved for each answer.
+* Add **citations** and “answer only from context” instructions when correctness matters.
+* Evaluate both layers separately: prompt A/B tests and retrieval quality (precision/recall, groundedness).
 
-**One-liner:** Prompt engineering is _how you ask_; context engineering is _what you show_. Combine them for reliable, scalable LLM apps.
+**One-liner:** Prompt engineering is *how you ask*; context engineering is *what you show*. Combine them for reliable, scalable LLM apps.
 
 ## Context Engineering Complete Guide
 
 [Complete Guide to Context Engineering for AI Agents](https://github.com/panaversity/learn-n8n-agentic-ai/blob/main/00_prompt_engineering/context_engineering_tutorial.md)
+
+## Image Generation Tutorial
+
+[Prompt Engineering Tutorial for Nano Banana](https://github.com/panaversity/learn-low-code-agentic-ai/blob/main/00_prompt_engineering/image_generation/readme.md)
+
+## Video Generation Tutorial
+
+[Video Generation Tutorial for Google Veo 3](https://github.com/panaversity/learn-low-code-agentic-ai/blob/main/00_prompt_engineering/video_generation/readme.md)
+
+Note: This is bonus material, due to high cost of the Veo 3 model this tutor in not covered in the Panaversity Certification Exams:
+
+https://docs.google.com/document/d/1BygAckkfc_NFQnTfEM6qqUvPdlIHpNItmRtvfRMGp38/edit?usp=sharing
+
 
 ## Understanding Large Language Models
 
 ### How LLMs Work (The Basics)
 
 Large Language Models are prediction engines that:
-
 - Take text input (your prompt)
 - Predict the next most likely word/token
 - Continue this process to generate complete responses
 - Base predictions on patterns learned from training data
 
 ### Key Concept: Autocompletion
-
 LLMs don't "understand" in the human sense—they're sophisticated autocomplete systems. Your prompt sets up the context for what should come next.
 
 ## Essential Configuration Settings
@@ -145,31 +156,26 @@ LLMs don't "understand" in the human sense—they're sophisticated autocomplete 
 Before diving into prompt techniques, understand these key parameters that control AI behavior:
 
 ### Temperature (0-1)
-
 - **Low (0-0.3)**: Focused, consistent, deterministic responses
 - **Medium (0.4-0.7)**: Balanced creativity and consistency
 - **High (0.8-1.0)**: Creative, diverse, but potentially unpredictable
 
 **When to use:**
-
 - Temperature 0: Math problems, factual questions
 - Temperature 0.7: Creative writing, brainstorming
 - Temperature 0.9: Poetry, experimental content
 
 ### Output Length/Token Limits
-
 - Controls maximum response length
 - Higher limits = more computational cost
 - Set appropriately for your task needs
 
 ### Top-K and Top-P (Nucleus Sampling)
-
 - **Top-K**: Limits choices to top K most likely tokens
 - **Top-P**: Limits choices based on cumulative probability
 - Work together with temperature to control randomness
 
 **Recommended starting points:**
-
 - Conservative: Temperature 0.1, Top-P 0.9, Top-K 20
 - Balanced: Temperature 0.2, Top-P 0.95, Top-K 30
 - Creative: Temperature 0.9, Top-P 0.99, Top-K 40
@@ -181,14 +187,12 @@ Before diving into prompt techniques, understand these key parameters that contr
 The simplest approach—just ask directly without examples.
 
 **Example:**
-
 ```
 Classify this movie review as positive, negative, or neutral:
 "The film was visually stunning but the plot felt rushed."
 ```
 
 **When to use:**
-
 - Simple, well-defined tasks
 - When the model has clear knowledge of the domain
 - Quick one-off requests
@@ -198,7 +202,6 @@ Classify this movie review as positive, negative, or neutral:
 Provide a single example to guide the response format.
 
 **Example:**
-
 ```
 Translate English to French:
 
@@ -214,7 +217,6 @@ French:
 Provide multiple examples to establish a clear pattern.
 
 **Example:**
-
 ```
 Convert customer feedback to structured data:
 
@@ -229,7 +231,6 @@ JSON:
 ```
 
 **Best practices:**
-
 - Use 3-5 examples for most tasks
 - Include diverse examples
 - Mix up the classes in classification tasks
@@ -240,7 +241,6 @@ JSON:
 Set overall context and behavior guidelines.
 
 **Example:**
-
 ```
 You are a helpful travel guide. Provide practical, accurate information about destinations. Always include:
 - Key attractions
@@ -256,13 +256,11 @@ User: Tell me about visiting Tokyo.
 Assign a specific character or expertise to the AI.
 
 **Example:**
-
 ```
 Act as an experienced software architect. I need help designing a scalable web application for 1 million users. What architecture patterns should I consider?
 ```
 
 **Effective roles:**
-
 - Subject matter expert (doctor, lawyer, teacher)
 - Creative roles (writer, designer, poet)
 - Analytical roles (data analyst, consultant)
@@ -273,7 +271,6 @@ Act as an experienced software architect. I need help designing a scalable web a
 Provide specific background information relevant to the task.
 
 **Example:**
-
 ```
 Context: You're writing for a tech blog aimed at beginners who have never coded before.
 
@@ -287,7 +284,6 @@ Write a 200-word explanation of what an API is, using simple language and practi
 Encourage step-by-step reasoning for complex problems.
 
 **Example:**
-
 ```
 Solve this step by step:
 If I was 6 when my sister was half my age, how old is my sister when I'm 40?
@@ -296,14 +292,12 @@ Let me think through this step by step:
 ```
 
 **When to use:**
-
 - Math problems
 - Logical reasoning
 - Complex analysis
 - Multi-step processes
 
 **Best practices:**
-
 - Use "Let's think step by step" or similar phrases
 - Set temperature to 0 for consistent reasoning
 - Extract final answers separately from reasoning
@@ -313,13 +307,11 @@ Let me think through this step by step:
 Generate multiple reasoning paths and select the most common answer.
 
 **Process:**
-
 1. Ask the same question multiple times with different phrasings
 2. Compare the answers
 3. Choose the most frequently occurring result
 
 **Example:**
-
 ```
 Question: If a store offers a 20% discount on a $50 item, what is the final price?
 
@@ -342,7 +334,6 @@ Self-Consistency involves generating multiple answers to the same question using
 Ask a more general question first, then use that context for the specific question.
 
 **Example 1:**
-
 ```
 First, what are the key principles of good user interface design?
 
@@ -353,7 +344,6 @@ Now, using those principles, redesign this mobile app's login screen: [descripti
 
 **Example 2:**
 Question: How should I optimize the loading speed of my e-commerce website?
-
 ```
 Step 1: First, what are the key factors that generally affect website loading speed?
 
@@ -378,12 +368,12 @@ Response:
 **Explanation of Concept:**
 Step-Back Prompting involves first asking a broader, foundational question to establish key principles or context before tackling the specific task. This approach ensures the model grounds its response in general knowledge (e.g., factors affecting website speed) before applying it to the specific problem (e-commerce site optimization). By breaking the task into two steps, the model produces more informed and structured recommendations, reducing the risk of overlooking critical factors.
 
+
 ### ReAct (Reasoning + Acting)
 
 Combine reasoning with tool use or actions.
 
 **Example 1:**
-
 ```
 I need to find out how many children the members of Metallica have in total.
 
@@ -394,7 +384,6 @@ Thought: Now I need to search for each member individually...
 ```
 
 **Example 2:**
-
 ```
 Question: What is the current population of Tokyo, and how does it compare to New York City?
 
@@ -426,11 +415,11 @@ ReAct (Reasoning + Acting) is a prompting strategy that interleaves reasoning st
 Explore multiple reasoning branches simultaneously for complex problems.
 
 **When to use:**
-
 - Creative problem solving
 - Strategic planning
 - Complex decision-making
 - Tasks requiring exploration of alternatives
+
 
 **Example:**
 
@@ -441,46 +430,43 @@ Task: Explore multiple strategic approaches, evaluate them, and select the best 
 **Branch 1: Social Media Campaign**
 Thought: Young adults are active on platforms like Instagram and TikTok. A campaign using influencers could build brand awareness.
 Exploration:
-
 - Pros: High engagement, visually appealing for clothing, cost-effective with micro-influencers.
 - Cons: Risk of inauthentic partnerships, oversaturation in influencer marketing.
-  Evaluation: Strong for visibility but needs unique content to stand out. Score: 8/10.
+Evaluation: Strong for visibility but needs unique content to stand out. Score: 8/10.
 
 **Branch 2: Sustainable Pop-Up Events**
 Thought: Hosting pop-up shops at eco-conscious festivals or college campuses could create direct engagement.
 Exploration:
-
 - Pros: Hands-on experience with products, builds community, aligns with eco-friendly values.
 - Cons: High logistical costs, limited geographic reach.
-  Evaluation: Great for brand authenticity but resource-intensive. Score: 7/10.
+Evaluation: Great for brand authenticity but resource-intensive. Score: 7/10.
 
 **Branch 3: Collaborative Partnerships**
 Thought: Partnering with eco-friendly brands (e.g., sustainable accessories) could cross-promote to aligned audiences.
 Exploration:
-
 - Pros: Expands reach via partner networks, reinforces eco-mission.
 - Cons: Complex coordination, potential brand dilution.
-  Evaluation: Effective for niche targeting but requires careful partner selection. Score: 7.5/10.
+Evaluation: Effective for niche targeting but requires careful partner selection. Score: 7.5/10.
 
 **Synthesis**: Combine a social media campaign (Branch 1) with selective pop-up events (Branch 2) for maximum impact. Use partnerships (Branch 3) to amplify reach at events.
 
 Final Strategy: Launch with a TikTok influencer campaign showcasing eco-friendly clothing, paired with pop-up shops at green festivals to engage young adults directly. Collaborate with a sustainable accessory brand to co-promote at events.
 
+
 **Explanation of Concept:**
 Tree of Thoughts (ToT) involves generating multiple reasoning branches to explore different solutions to a problem, evaluating each, and synthesizing the best ideas into a final answer. Each branch represents a distinct approach, which is explored, assessed for pros and cons, and scored. This method is ideal for complex, open-ended tasks like strategic planning, as it encourages creative exploration and systematic comparison, as shown in the marketing strategy example above.
+
 
 ## Best Practices for Effective Prompts
 
 ### 1. Be Specific and Clear
 
 **Bad:**
-
 ```
 Write about dogs.
 ```
 
 **Good:**
-
 ```
 Write a 300-word informative article about the health benefits of owning a dog, focusing on mental health, physical activity, and social connections. Use a friendly, accessible tone for general readers.
 ```
@@ -488,7 +474,6 @@ Write a 300-word informative article about the health benefits of owning a dog, 
 ### 2. Use Action Verbs
 
 Be explicit about what you want the AI to do:
-
 - Analyze, Compare, Create, Describe, Evaluate
 - Extract, Generate, List, Rank, Summarize
 - Translate, Write, Explain, Classify
@@ -500,7 +485,6 @@ Examples are the most powerful way to communicate your expectations.
 ### 4. Structure Your Prompts
 
 Use clear formatting:
-
 ```
 Task: [What you want done]
 Context: [Background information]
@@ -511,13 +495,11 @@ Example: [Sample of desired output]
 ### 5. Use Instructions Over Constraints
 
 **Better:**
-
 ```
 Write a professional email summarizing the key points from our meeting.
 ```
 
 **Avoid:**
-
 ```
 Write an email but don't make it too long or too informal or too detailed.
 ```
@@ -525,7 +507,6 @@ Write an email but don't make it too long or too informal or too detailed.
 ### 6. Control Output Format
 
 Specify exactly how you want the response structured:
-
 ```
 Return your answer as a JSON object with the following structure:
 {
@@ -583,20 +564,18 @@ Context: This is for a {industry} company with {company_size} employees
 **Task:** Create a social media post
 
 **Basic prompt:**
-
 ```
 Write a social media post about coffee.
 ```
 
 **Improved prompt:**
-
 ```
-Write an engaging Instagram post for a local coffee shop's new seasonal drink.
+Write an engaging Instagram post for a local coffee shop's new seasonal drink. 
 
 Context: Fall season launch of Pumpkin Spice Maple Latte
 Audience: Coffee enthusiasts aged 25-40
 Tone: Warm, inviting, not overly promotional
-Format:
+Format: 
 - Main text (150 characters max)
 - 3-5 relevant hashtags
 - Call to action
@@ -609,13 +588,11 @@ Include sensory details about taste and aroma.
 **Task:** Analyze customer feedback
 
 **Basic prompt:**
-
 ```
 What do customers think about our product?
 ```
 
 **Improved prompt:**
-
 ```
 Analyze the following customer reviews and provide insights:
 
@@ -636,13 +613,11 @@ Format as a structured report with clear headings.
 **Task:** Create a function
 
 **Basic prompt:**
-
 ```
 Write a function to sort a list.
 ```
 
 **Improved prompt:**
-
 ```
 Write a Python function that:
 
@@ -679,17 +654,16 @@ The framework ensures that prompt engineering is not a haphazard process but a m
 
 Document your prompts systematically:
 
-| Prompt Version | Goal               | Model | Temperature | Output Quality | Notes               |
-| -------------- | ------------------ | ----- | ----------- | -------------- | ------------------- |
-| v1.0           | Generate blog post | GPT-4 | 0.7         | Good           | Too formal          |
-| v1.1           | Generate blog post | GPT-4 | 0.7         | Better         | Added tone guidance |
+| Prompt Version | Goal | Model | Temperature | Output Quality | Notes |
+|----------------|------|-------|-------------|----------------|--------|
+| v1.0 | Generate blog post | GPT-4 | 0.7 | Good | Too formal |
+| v1.1 | Generate blog post | GPT-4 | 0.7 | Better | Added tone guidance |
 
 ### 2. A/B Test Different Approaches
 
 A/B testing in prompt engineering involves creating and trying out multiple versions of a prompt (e.g., different wordings, structures, examples, or settings like temperature) to see which version yields the most accurate, relevant, or high-quality output from the AI. It’s a systematic way to experiment and optimize prompts by comparing their performance side by side.
 
 Try variations:
-
 - Different example sets
 - Various instruction phrasings
 - Different temperature settings
@@ -698,7 +672,6 @@ Try variations:
 ### 3. Evaluate Results
 
 Consider:
-
 - **Accuracy**: Does it answer correctly?
 - **Relevance**: Is it on-topic?
 - **Completeness**: Does it cover everything needed?
@@ -717,7 +690,6 @@ Consider:
 ### 1. Leverage Structured Outputs
 
 Use JSON, XML, or other structured formats for complex data:
-
 ```
 Return analysis as JSON:
 {
@@ -736,7 +708,6 @@ Return analysis as JSON:
 ### 2. Context Management
 
 For long conversations:
-
 - Summarize previous context
 - Use system messages effectively
 - Break complex tasks into smaller parts
@@ -744,7 +715,6 @@ For long conversations:
 ### 3. Multi-Modal Prompting
 
 When working with models that support images:
-
 - Be explicit about what to look for in images
 - Combine text and visual instructions
 - Use images as examples or context
@@ -752,7 +722,6 @@ When working with models that support images:
 ### 4. Prompt Chaining
 
 Break complex tasks into steps:
-
 ```
 Step 1: Research the topic
 Step 2: Create an outline based on research
@@ -762,32 +731,29 @@ Step 3: Write the full content based on outline
 ## Resources and Next Steps
 
 ### Tools and Platforms
-
 - **OpenAI Playground**: Test prompts with GPT models
 - **Anthropic Console**: Experiment with Claude
 - **Google AI Studio**: Try Gemini models
 - **Prompt optimization tools**: Available from various providers
 
 ### Learning Resources
-
 - Model documentation and guides
 - Community forums and Discord servers
 - GitHub repositories with prompt examples
 - Academic papers on prompt engineering techniques
 
 ### Practice Projects
-
 1. **Personal Assistant**: Create prompts for scheduling, email drafting
 2. **Content Creation**: Develop templates for different types of writing
 3. **Data Analysis**: Build prompts for interpreting datasets
 4. **Code Review**: Create prompts for code analysis and improvement
 
 ### Building a Prompt Library
-
 - Create templates for common tasks
 - Document what works for different models
 - Share and learn from other practitioners
 - Keep updating as models improve
+
 
 ## Mixture-of-Experts (MoE) and Prompt Engineering
 
@@ -795,28 +761,27 @@ Mixture-of-Experts (MoE) is a machine learning architecture designed to improve 
 
 ![](./moe.webp)
 
+
 #### MoE Implementation Status in Frontier Models
+Below is an table summarizing the Mixture-of-Experts (MoE) implementation status based on available information up to August 2025. 
 
-Below is an table summarizing the Mixture-of-Experts (MoE) implementation status based on available information up to August 2025.
-
-| **LLM**            | **Developer** | **MoE Implementation** | **Details**                                                                                                                                                                                   |
-| ------------------ | ------------- | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| **GPT-5**          | OpenAI        | Yes (Speculated)       | Likely uses MoE with dynamic routing for reasoning levels. Estimated ~2T total parameters. No official confirmation, but performance (e.g., 74.9% SWE-bench) suggests sparse MoE-like design. |
-| **Grok 4**         | xAI           | Yes (Confirmed)        | Utilizes MoE with multi-agent architecture. ~500B total parameters, sparse activation. Strong performance on ARC-AGI (16.2% with Thinking Mode). Expert count not disclosed.                  |
-| **Gemini 2.5 Pro** | Google        | Yes (Confirmed)        | Confirmed MoE with advanced reasoning capabilities. Details on sparsity and expert count not specified, but designed for efficient scaling.                                                   |
-| **Claude 4**       | Anthropic     | Unknown                | No confirmed details on Claude 4. Based on Claude 3.5 Sonnet, no MoE implementation is confirmed. Estimated ~400B parameters, likely dense architecture.                                      |
-| **DeepSeek-V3**    | DeepSeek      | Yes (Confirmed)        | MoE model with 671B total parameters, 37B active per token, using DeepSeekMoE architecture with Multi-Head Latent Attention (MLA). Highly efficient, trained on 14.8T tokens for ~$5.6M.      | [](https://arxiv.org/abs/2412.19437)[](https://www.infoq.com/news/2025/01/deepseek-v3-llm/) |
+| **LLM**                | **Developer**         | **MoE Implementation** | **Details**                                                                 |
+|------------------------|-----------------------|------------------------|-----------------------------------------------------------------------------|
+| **GPT-5**              | OpenAI               | Yes (Speculated)       | Likely uses MoE with dynamic routing for reasoning levels. Estimated ~2T total parameters. No official confirmation, but performance (e.g., 74.9% SWE-bench) suggests sparse MoE-like design. |
+| **Grok 4**             | xAI                  | Yes (Confirmed)        | Utilizes MoE with multi-agent architecture. ~500B total parameters, sparse activation. Strong performance on ARC-AGI (16.2% with Thinking Mode). Expert count not disclosed. |
+| **Gemini 2.5 Pro**     | Google               | Yes (Confirmed)        | Confirmed MoE with advanced reasoning capabilities. Details on sparsity and expert count not specified, but designed for efficient scaling. |
+| **Claude 4**           | Anthropic            | Unknown                | No confirmed details on Claude 4. Based on Claude 3.5 Sonnet, no MoE implementation is confirmed. Estimated ~400B parameters, likely dense architecture. |
+| **DeepSeek-V3**        | DeepSeek             | Yes (Confirmed)        | MoE model with 671B total parameters, 37B active per token, using DeepSeekMoE architecture with Multi-Head Latent Attention (MLA). Highly efficient, trained on 14.8T tokens for ~$5.6M. |[](https://arxiv.org/abs/2412.19437)[](https://www.infoq.com/news/2025/01/deepseek-v3-llm/)
 
 ### Notes:
-
 - **GPT-5**: MoE is speculated due to its dynamic routing and massive scale (~2T parameters), suggesting a sparse architecture. No official OpenAI confirmation.
 - **Grok 4**: Confirmed MoE with multi-agent design for specialized task handling, enhancing efficiency through sparse activation.
 - **Gemini 2.5 Pro**: Confirmed MoE, optimized for scalability, though specific expert counts are undisclosed.
 - **Claude 4**: No explicit data on Claude 4. Assuming similarity to Claude 3.5 Sonnet, it likely uses a dense transformer without MoE, pending new evidence.
 - **DeepSeek-V3**: Explicitly uses MoE with 671B total parameters, activating only 37B per token via DeepSeekMoE and MLA, achieving cost-effective training and inference. Outperforms many open-source models on benchmarks like MMLU and SWE-bench.
 
-#### Key Components of MoE:
 
+#### Key Components of MoE:
 1. **Experts**: These are specialized sub-networks (often feed-forward neural networks) within the model, each trained to handle specific types of data or tasks. For example, one expert might specialize in mathematical reasoning, another in creative writing, and so on. In advanced LLMs, there can be dozens or hundreds of experts (e.g., Mixtral 8x7B has 8 experts per layer).
 
 2. **Gating Network (or Router)**: This is a lightweight mechanism (typically a simple neural network) that evaluates the input and decides which experts to route the data to. It assigns weights or probabilities to experts, selecting the top-k (e.g., top 2 out of 8) most relevant ones. The output is a weighted combination of the selected experts' responses. The gating is learned during training and can be dynamic, adapting to the input.
@@ -824,7 +789,6 @@ Below is an table summarizing the Mixture-of-Experts (MoE) implementation status
 3. **Sparse Activation**: Unlike dense models (e.g., GPT-3 or Llama) where all parameters are activated for every token, MoE activates only a fraction (e.g., 10-20%) of the parameters per input. This makes MoE models "conditionally compute" – they scale to trillions of parameters but run as efficiently as smaller dense models during inference.
 
 #### How MoE Works in LLMs:
-
 - **Training**: During pre-training, the model learns to route inputs to appropriate experts via auxiliary losses (e.g., load balancing to prevent any single expert from being overused). This is often done on massive datasets to ensure experts specialize without overlapping too much.
 - **Inference**: For a prompt, the gating network processes the input tokens layer by layer, routing them to experts. This parallelism allows for faster training and inference on hardware like GPUs/TPUs, as unused experts can be skipped.
 - **Benefits**:
@@ -843,56 +807,53 @@ MoE has become prevalent in advanced LLMs since around 2023, with models like Mi
 Prompt engineering – the art of crafting inputs to elicit optimal responses from LLMs – traditionally focuses on clarity, structure, role-playing, chain-of-thought (CoT), and few-shot examples to guide dense models. MoE introduces nuances because of its modular, expert-based design, shifting the focus toward "expert elicitation" and robustness to routing dynamics. While core principles remain, MoE can make prompts more effective (or unpredictable) depending on how they activate the underlying experts. Here's how it impacts the practice:
 
 #### 1. **Need for Expert-Aware Prompting**:
-
-- In MoE models, the gating mechanism interprets the input to select experts. Vague or overly broad prompts might route to generic experts, leading to mediocre outputs, while targeted prompts can "awaken" specialized ones.
-- **Change**: Engineers must design prompts to signal specific domains. For instance, starting with "As a math expert..." might route to numerical specialists, improving accuracy on equations. This is akin to "role-playing" but more potent due to built-in specialization.
-- **Example**: In a dense model, a simple "Solve 2x + 3 = 7" works fine. In MoE, prefixing with "Using algebraic expertise:" could ensure routing to a math-focused expert, reducing errors from misrouting.
+   - In MoE models, the gating mechanism interprets the input to select experts. Vague or overly broad prompts might route to generic experts, leading to mediocre outputs, while targeted prompts can "awaken" specialized ones.
+   - **Change**: Engineers must design prompts to signal specific domains. For instance, starting with "As a math expert..." might route to numerical specialists, improving accuracy on equations. This is akin to "role-playing" but more potent due to built-in specialization.
+   - **Example**: In a dense model, a simple "Solve 2x + 3 = 7" works fine. In MoE, prefixing with "Using algebraic expertise:" could ensure routing to a math-focused expert, reducing errors from misrouting.
 
 #### 2. **Enhanced Chain-of-Thought (CoT) and Multi-Step Reasoning**:
-
-- MoE's experts can handle sub-tasks modularly, so prompts that break down problems (e.g., "Step 1: Analyze facts with historical expert. Step 2: Predict with forecasting expert.") leverage routing for better decomposition.
-- **Change**: Prompts become more "orchestrated," explicitly invoking expert-like steps. This can amplify CoT effectiveness, as different experts process intermediate steps. Studies show MoE models excel in long-context reasoning when prompts guide routing progressively.
-- **Tip**: Use iterative prompting (e.g., via API calls) to refine outputs, as initial routing might not be perfect – re-prompt with feedback to re-route.
+   - MoE's experts can handle sub-tasks modularly, so prompts that break down problems (e.g., "Step 1: Analyze facts with historical expert. Step 2: Predict with forecasting expert.") leverage routing for better decomposition.
+   - **Change**: Prompts become more "orchestrated," explicitly invoking expert-like steps. This can amplify CoT effectiveness, as different experts process intermediate steps. Studies show MoE models excel in long-context reasoning when prompts guide routing progressively.
+   - **Tip**: Use iterative prompting (e.g., via API calls) to refine outputs, as initial routing might not be perfect – re-prompt with feedback to re-route.
 
 #### 3. **Handling Sparsity and Variability**:
-
-- Outputs can vary more across runs due to stochastic routing (if top-k selection has randomness), making deterministic prompting harder.
-- **Change**: Emphasize consistency techniques like temperature=0 (for greedy decoding) or repeated sampling to average expert activations. Also, test prompts across multiple runs to identify routing-sensitive ones. In production, this might require "prompt ensembles" where multiple variants are tried to hit the right experts.
+   - Outputs can vary more across runs due to stochastic routing (if top-k selection has randomness), making deterministic prompting harder.
+   - **Change**: Emphasize consistency techniques like temperature=0 (for greedy decoding) or repeated sampling to average expert activations. Also, test prompts across multiple runs to identify routing-sensitive ones. In production, this might require "prompt ensembles" where multiple variants are tried to hit the right experts.
 
 #### 4. **Efficiency in Prompt Length and Complexity**:
-
-- Shorter, focused prompts can efficiently activate few experts, reducing latency – a boon for real-time apps.
-- **Change**: MoE encourages concise, intent-clear prompts over verbose ones. However, for creative or open-ended tasks, adding domain hints (e.g., "In the style of a sci-fi expert") can unlock diverse expert combinations without bloating the input.
-- **Few-Shot Learning**: Examples in prompts help "train" the router on-the-fly, making MoE more adaptable to custom tasks than dense models, but they must align with expert domains to avoid dilution.
+   - Shorter, focused prompts can efficiently activate few experts, reducing latency – a boon for real-time apps.
+   - **Change**: MoE encourages concise, intent-clear prompts over verbose ones. However, for creative or open-ended tasks, adding domain hints (e.g., "In the style of a sci-fi expert") can unlock diverse expert combinations without bloating the input.
+   - **Few-Shot Learning**: Examples in prompts help "train" the router on-the-fly, making MoE more adaptable to custom tasks than dense models, but they must align with expert domains to avoid dilution.
 
 #### 5. **Broader Implications and Best Practices**:
+   - **Positive Shifts**: MoE reduces the need for heavy fine-tuning; prompt engineering can "fine-tune" via routing. It's great for multilingual or multimodal LLMs, where prompts specify modalities to route correctly.
+   - **Challenges**: Black-box routing means trial-and-error is key – use A/B testing or logging to analyze which prompts activate desired behaviors. Ethically, be aware of potential biases if experts specialize unevenly (e.g., cultural experts).
+   - **Evolving Landscape (as of 2025)**: With models like advanced Grok versions or Llama 3 MoE variants, tools like prompt optimizers (e.g., DSPy or Guidance) are adapting to simulate routing. Research suggests MoE amplifies prompt sensitivity, so hybrid approaches (combining with RAG for external knowledge) are rising.
 
-- **Positive Shifts**: MoE reduces the need for heavy fine-tuning; prompt engineering can "fine-tune" via routing. It's great for multilingual or multimodal LLMs, where prompts specify modalities to route correctly.
-- **Challenges**: Black-box routing means trial-and-error is key – use A/B testing or logging to analyze which prompts activate desired behaviors. Ethically, be aware of potential biases if experts specialize unevenly (e.g., cultural experts).
-- **Evolving Landscape (as of 2025)**: With models like advanced Grok versions or Llama 3 MoE variants, tools like prompt optimizers (e.g., DSPy or Guidance) are adapting to simulate routing. Research suggests MoE amplifies prompt sensitivity, so hybrid approaches (combining with RAG for external knowledge) are rising.
+
+
 
 ## Small wording changes can steer which experts wake up
 
-Because a router chooses experts _based on your tokens_, small wording changes can steer which experts wake up. That means prompt craft can influence which specialization you tap.
+Because a router chooses experts *based on your tokens*, small wording changes can steer which experts wake up. That means prompt craft can influence which specialization you tap.
 
 ## Do more of this
 
 1. **Front-load domain signals.** Put the clearest task + domain cues in the first few lines to help the router lock onto the right experts early.
 
-   - “Role: Financial analyst. Task: 10-K variance analysis. Output: tabular summary + bullet risks.”
-
+   * “Role: Financial analyst. Task: 10-K variance analysis. Output: tabular summary + bullet risks.”
 2. **Use unambiguous, domain-specific vocabulary.** The router keys off tokens; plain, on-topic terms beat clever phrasing or euphemisms.
 3. **Separate mixed tasks.** If you combine coding, legal, and marketing in one shot, the router may oscillate experts. Break it into steps or run sequential prompts.
-4. **Match examples to the task.** Few-shot exemplars should be in the _same domain, format, and language_ as your goal—this strongly reinforces the intended experts.
+4. **Match examples to the task.** Few-shot exemplars should be in the *same domain, format, and language* as your goal—this strongly reinforces the intended experts.
 5. **Be explicit about language and style.** Start with: “Language: Urdu. Style: concise, technical.” Multilingual MoE models often have language-specialized experts.
 6. **Stabilize when you need consistency.** Lower temperature/top-p reduces token drift, which indirectly reduces expert churn across the generation.
-7. **Keep retrieval context clean.** In RAG, put a short task summary _before_ the docs, and keep the docs on-topic; noisy context can misroute tokens.
+7. **Keep retrieval context clean.** In RAG, put a short task summary *before* the docs, and keep the docs on-topic; noisy context can misroute tokens.
 
 ## Do less of this
 
-- **Cute indirection (“you know what I mean”)**—it weakens routing signals.
-- **Overlong preambles** that bury the true task. MoE routes per token, but early tokens set the scene.
-- **Mashing multiple formats** (e.g., code + poetry + SQL) in one go—split it.
+* **Cute indirection (“you know what I mean”)**—it weakens routing signals.
+* **Overlong preambles** that bury the true task. MoE routes per token, but early tokens set the scene.
+* **Mashing multiple formats** (e.g., code + poetry + SQL) in one go—split it.
 
 ## A routing-friendly prompt skeleton
 
@@ -920,11 +881,11 @@ Now solve the task.
 
 ## Troubleshooting with MoE models
 
-- **Inconsistent answers across runs?** Add sharper domain anchors at the top; reduce temperature; include one very short, in-domain example.
-- **It “misses” the skill you want (e.g., math vs. writing)?** Use explicit skill tags (“Task type: quantitative proof/derivation”) and show the target format in a tiny exemplar.
-- **Mixed-topic responses?** Split the request; or ask for a plan first, then execute each step in a follow-up.
+* **Inconsistent answers across runs?** Add sharper domain anchors at the top; reduce temperature; include one very short, in-domain example.
+* **It “misses” the skill you want (e.g., math vs. writing)?** Use explicit skill tags (“Task type: quantitative proof/derivation”) and show the target format in a tiny exemplar.
+* **Mixed-topic responses?** Split the request; or ask for a plan first, then execute each step in a follow-up.
 
-**Bottom line:** MoE doesn’t change the _foundation_ of prompt engineering, but it **raises the leverage of clear, early, domain-specific signals** because they literally decide which specialists inside the model wake up for your tokens.
+**Bottom line:** MoE doesn’t change the *foundation* of prompt engineering, but it **raises the leverage of clear, early, domain-specific signals** because they literally decide which specialists inside the model wake up for your tokens.
 
 ## Conclusion
 
@@ -945,3 +906,5 @@ The future of AI interaction lies in clear, effective communication—and prompt
 ## The 6-Part Prompting Framework
 
 Now take your prompting to next level by following this [The 6-Part Prompting Framework](https://github.com/panaversity/learn-low-code-agentic-ai/blob/main/00_prompt_engineering/six_part_prompting_framework.md)
+
+
