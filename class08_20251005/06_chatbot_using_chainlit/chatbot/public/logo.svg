@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="#6366f1" stroke="#4f46e5" stroke-width="2"/>
+  
+  <!-- Chat bubble -->
+  <path d="M12 18c0-3 2.5-5 5.5-5h13c3 0 5.5 2 5.5 5v6c0 3-2.5 5-5.5 5h-6l-6 4v-4c-3 0-5.5-2-5.5-5v-6z" fill="white"/>
+  
+  <!-- Dots inside bubble -->
+  <circle cx="18" cy="21" r="1.5" fill="#6366f1"/>
+  <circle cx="24" cy="21" r="1.5" fill="#6366f1"/>
+  <circle cx="30" cy="21" r="1.5" fill="#6366f1"/>
+  
+  <!-- Sparkle accent -->
+  <g fill="white" opacity="0.8">
+    <circle cx="36" cy="12" r="1"/>
+    <circle cx="38" cy="14" r="0.5"/>
+    <circle cx="34" cy="10" r="0.5"/>
+  </g>
+</svg>

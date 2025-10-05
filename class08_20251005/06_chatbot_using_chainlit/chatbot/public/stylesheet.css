@@ -1,0 +1,912 @@
+/* Study Chatbot - Professional Chainlit Styling */
+
+/* CSS Variables for consistent theming - Force dark theme always */
+:root, [data-theme="light"], [data-theme="dark"], .light, .dark {
+  --cl-color-primary-50: #eff6ff !important;
+  --cl-color-primary-100: #dbeafe !important;
+  --cl-color-primary-500: #6366f1 !important;
+  --cl-color-primary-600: #4f46e5 !important;
+  --cl-color-primary-700: #3730a3 !important;
+  --cl-color-gray-50: #f8fafc !important;
+  --cl-color-gray-100: #f1f5f9 !important;
+  --cl-color-gray-200: #e2e8f0 !important;
+  --cl-color-gray-700: #374151 !important;
+  --cl-color-gray-800: #1e293b !important;
+  --cl-color-gray-900: #0f172a !important;
+}
+
+/* FORCE DARK THEME (highest priority)
+   Ensures the app always renders in dark mode and overrides any light-mode classes/attributes.
+*/
+html, body, #root, :root,
+[data-theme], [data-theme="light"], [data-theme="dark"],
+.light, .dark, .theme-light, .theme-dark {
+  color-scheme: dark !important;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  -webkit-text-fill-color: #f1f5f9 !important;
+  color: #f1f5f9 !important;
+}
+
+/* Override any explicit light-theme rules */
+[data-theme="light"] *, .light *, .theme-light * {
+  background: transparent !important;
+  color: #f1f5f9 !important;
+  border-color: #374151 !important;
+}
+
+/* Prevent switching by disabling theme toggle if present */
+#theme-toggle, button[id*="theme-toggle" i], .theme-toggle {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Global styling - Force dark theme regardless of toggle */
+html, body, #root, 
+html[data-theme="light"], body[data-theme="light"], #root[data-theme="light"],
+html[data-theme="dark"], body[data-theme="dark"], #root[data-theme="dark"],
+.light, .light body, .light #root,
+.dark, .dark body, .dark #root {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #f1f5f9 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+  min-height: 100vh !important;
+}
+
+/* Header styling */
+.MuiAppBar-root, header {
+  background: rgba(30, 41, 59, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid #374151 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Logo and branding */
+.MuiAppBar-root img, .header-logo, [alt*="logo"], [src*="logo"] {
+  filter: brightness(1.2) !important;
+  max-height: 32px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Logo utility: ensure square display and responsive */
+.logo {
+  width: 200px !important;
+  max-width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: contain !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.MuiTypography-h6, .app-title, .header-title {
+  color: #f1f5f9 !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+}
+
+/* ===========================================
+   Dialog: tighten close button and red Cancel
+   =========================================== */
+/* Reduce spacing below the close (X) button and keep it tucked into the corner */
+#new-chat-dialog > button {
+  position: absolute !important;
+  top: 8px !important;
+  right: 8px !important;
+  margin-bottom: 0 !important;
+  padding: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  opacity: 0.95 !important;
+}
+
+/* Ensure the close icon is visible on dark backgrounds */
+#new-chat-dialog > button svg {
+  stroke: #e2e8f0 !important;
+}
+
+/* Style the Cancel button inside the dialog with a red mix */
+/* The Cancel button is the first button inside the second child div of the dialog */
+#new-chat-dialog > div:nth-child(2) > button:first-child {
+  background: rgba(220, 38, 38, 0.06) !important; /* subtle red tint */
+  color: #fecaca !important; /* light red text */
+  border: 1px solid rgba(220, 38, 38, 0.14) !important;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease !important;
+}
+
+#new-chat-dialog > div:nth-child(2) > button:first-child:hover {
+  background: rgba(220, 38, 38, 0.12) !important;
+  color: #ffb4b4 !important;
+  transform: translateY(-1px) !important;
+}
+
+#new-chat-dialog > div:nth-child(2) > button:first-child:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12) !important;
+}
+
+#new-chat-dialog > div:nth-child(2) > button:first-child[disabled] {
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}
+
+/* Message containers */
+.step, .message, .chat-message {
+  background: #1e293b !important;
+  border: 1px solid #374151 !important;
+  border-radius: 16px !important;
+  margin: 16px 0 !important;
+  padding: 20px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  animation: slideIn 0.3s ease-out !important;
+}
+
+/* User messages */
+.step[data-name="user"], .message.user, .user-message {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+  border: none !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  max-width: 80% !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+}
+
+/* Remove gray div around user messages - Comprehensive including chat history */
+.step[data-name="user"] > div,
+.message.user > div,
+.user-message > div,
+div:has(.step[data-name="user"]),
+div:has(.message.user),
+div:has(.user-message),
+/* Additional selectors for user message containers */
+.step[data-name="user"] .MuiPaper-root,
+.step[data-name="user"] .MuiBox-root,
+.step[data-name="user"] .MuiCard-root,
+.message.user .MuiPaper-root,
+.message.user .MuiBox-root,
+.message.user .MuiCard-root,
+/* Parent containers */
+div[class*="MuiPaper"]:has(.step[data-name="user"]),
+div[class*="MuiBox"]:has(.step[data-name="user"]),
+div[class*="MuiStack"]:has(.step[data-name="user"]),
+div[class*="MuiPaper"]:has(.message.user),
+div[class*="MuiBox"]:has(.message.user),
+div[class*="MuiStack"]:has(.message.user),
+/* Chat history specific selectors */
+.chat-history .step[data-name="user"],
+.chat-history .message.user,
+.history .step[data-name="user"],
+.history .message.user,
+div[class*="history"] .step[data-name="user"],
+div[class*="history"] .message.user,
+div[class*="chat"] .step[data-name="user"],
+div[class*="chat"] .message.user,
+/* Wrapper divs around user messages in history */
+div[class*="MuiListItem"]:has(.step[data-name="user"]),
+div[class*="MuiListItem"]:has(.message.user),
+li:has(.step[data-name="user"]),
+li:has(.message.user),
+/* Any container div that wraps user messages */
+div:has(.step[data-name="user"]) > div,
+div:has(.message.user) > div {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Assistant messages */
+.step[data-name="assistant"], .message.assistant, .assistant-message {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #374151 !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+  max-width: 80% !important;
+}
+
+/* Input area comprehensive styling */
+.MuiInputBase-root, .MuiOutlinedInput-root, .input-container, textarea, input[type="text"] {
+  background: #1e293b !important;
+  border: 2px solid #374151 !important;
+  border-radius: 12px !important;
+  color: #f1f5f9 !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  transition: all 0.2s ease !important;
+  min-height: 80px !important; /* Make input field taller (3-4 rows) */
+  resize: vertical !important; /* Allow vertical resizing only */
+}
+
+/* Multi-line text input specific styling */
+.MuiInputBase-root textarea, .MuiOutlinedInput-root textarea, 
+textarea, .input-textarea {
+  min-height: 80px !important;
+  max-height: 200px !important;
+  line-height: 1.5 !important;
+  font-family: inherit !important;
+  resize: vertical !important;
+}
+
+.MuiInputBase-root:focus-within, .MuiOutlinedInput-root:focus-within, 
+input:focus, textarea:focus {
+  border-color: #6366f1 !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+  outline: none !important;
+}
+
+.MuiInputBase-input, .MuiOutlinedInput-input {
+  color: #f1f5f9 !important;
+  padding: 0 !important;
+}
+
+.MuiInputBase-input::placeholder, .MuiOutlinedInput-input::placeholder, 
+input::placeholder, textarea::placeholder {
+  color: #94a3b8 !important;
+  opacity: 0.8 !important;
+}
+
+/* Fix for input field borders */
+.MuiOutlinedInput-notchedOutline {
+  border: none !important;
+}
+
+/* Remove dark container around input field */
+.MuiPaper-root:has(.MuiInputBase-root), 
+.input-wrapper, .input-container-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Input area layout improvements */
+.input-area, .chat-input-area, .message-input-area {
+  padding: 20px 0 !important;
+  margin: 16px 0 !important;
+  background: transparent !important;
+}
+
+/* Additional spacing for input field bottom margin */
+.MuiInputBase-root, .MuiOutlinedInput-root {
+  margin-bottom: 15px !important;
+}
+
+/* Container spacing improvements */
+div[class*="MuiBox"]:has(.MuiInputBase-root) {
+  padding-bottom: 15px !important;
+}
+
+/* Force spacing after input elements */
+.MuiInputBase-root::after, .MuiOutlinedInput-root::after {
+  content: "" !important;
+  display: block !important;
+  height: 10px !important;
+  width: 100% !important;
+}
+
+/* Comprehensive button container spacing */
+div:has(button[type="submit"]),
+div:has(.send-button),
+div:has(.MuiIconButton-root),
+.MuiStack-root:has(button),
+[class*="Stack"]:has(button),
+[class*="Box"]:has(button) {
+  margin-top: 15px !important;
+  padding-top: 10px !important;
+}
+
+/* Spacing between input and buttons */
+.input-actions, .button-group, .action-buttons {
+  margin-top: 15px !important;
+  gap: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Send button positioning */
+.send-button, button[type="submit"] {
+  margin-left: 12px !important;
+  margin-top: 15px !important;
+  align-self: flex-end !important;
+}
+
+/* Button styling - comprehensive coverage */
+.MuiButton-root, .MuiIconButton-root, button {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  padding: 10px 20px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.MuiButton-root:hover, .MuiIconButton-root:hover, button:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4) !important;
+}
+
+.MuiButton-root:active, .MuiIconButton-root:active, button:active {
+  transform: translateY(0) !important;
+}
+
+/* Specific button overrides */
+.MuiButton-outlined {
+  background: transparent !important;
+  border: 2px solid #6366f1 !important;
+  color: #6366f1 !important;
+}
+
+.MuiButton-outlined:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: #4f46e5 !important;
+}
+
+/* Send button specific styling */
+button[type="submit"], .send-button, .submit-button {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  min-width: 80px !important;
+}
+
+/* Header and navigation styling */
+h1, h2, h3, h4, h5, h6, .MuiTypography-h1, .MuiTypography-h2, 
+.MuiTypography-h3, .MuiTypography-h4, .MuiTypography-h5, .MuiTypography-h6 {
+  color: #f1f5f9 !important;
+  font-weight: 700 !important;
+}
+
+/* Paper and card elements */
+.MuiPaper-root, .MuiCard-root, .card {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #374151 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Typography */
+.MuiTypography-root, p, span, div {
+  color: #f1f5f9 !important;
+}
+
+.MuiTypography-body2 {
+  color: #cbd5e1 !important;
+}
+
+/* Loading and progress indicators */
+.MuiCircularProgress-root {
+  color: #6366f1 !important;
+}
+
+.MuiLinearProgress-root {
+  background-color: #374151 !important;
+}
+
+.MuiLinearProgress-bar {
+  background-color: #6366f1 !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6366f1, #4f46e5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4f46e5, #3730a3);
+}
+
+::-webkit-scrollbar-corner {
+  background: #0f172a;
+}
+
+/* Animation for messages */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container and layout */
+.container, .main-container, .chat-container {
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 20px !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .step, .message, .chat-message {
+    margin: 12px 0 !important;
+    padding: 16px !important;
+    max-width: 95% !important;
+  }
+  
+  .container, .main-container, .chat-container {
+    padding: 12px !important;
+  }
+}
+
+/* Ensure proper contrast and readability */
+a, .MuiLink-root {
+  color: #60a5fa !important;
+}
+
+a:hover, .MuiLink-root:hover {
+  color: #93c5fd !important;
+}
+
+/* Fix any remaining pink/default colors */
+.MuiCheckbox-root, .MuiRadio-root, .MuiSwitch-thumb {
+  color: #6366f1 !important;
+}
+
+.MuiCheckbox-root.Mui-checked, .MuiRadio-root.Mui-checked {
+  color: #6366f1 !important;
+}
+
+/* Ensure logo visibility */
+img[alt*="logo" i], img[src*="logo" i], .logo, .brand-logo {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  filter: brightness(1.2) contrast(1.1) !important;
+}
+
+/* Advanced input area styling - Remove dark containers */
+div[class*="MuiPaper"]:has(div[class*="MuiInputBase"]),
+div[class*="paper"]:has(textarea),
+.MuiPaper-elevation1:has(.MuiInputBase-root) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Chainlit specific input wrapper removal */
+.input-wrapper, .chat-input-wrapper, .message-input-wrapper,
+div[data-testid*="input"], div[class*="input-container"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 8px 0 !important;
+}
+
+/* Remove gray div around user input - comprehensive */
+div:has(.MuiInputBase-root),
+div:has(.MuiOutlinedInput-root),
+div:has(textarea),
+div:has(input[type="text"]),
+.MuiPaper-root:has(.MuiInputBase-root),
+.MuiBox-root:has(.MuiInputBase-root),
+.MuiStack-root:has(.MuiInputBase-root),
+form > div:has(.MuiInputBase-root),
+div[class*="MuiPaper"]:has(.MuiInputBase-root),
+div[class*="MuiBox"]:has(.MuiInputBase-root),
+div[class*="Container"]:has(.MuiInputBase-root) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Better input field layout */
+.MuiInputBase-multiline {
+  padding: 16px !important;
+  background: #1e293b !important;
+  border: 2px solid #374151 !important;
+  border-radius: 12px !important;
+  width: 100% !important;
+}
+
+/* Improved button spacing and positioning */
+.MuiStack-root:has(.MuiInputBase-root), 
+.input-button-container,
+div:has(.MuiInputBase-root) + div:has(button),
+div:has(.MuiInputBase-root) + div,
+.MuiInputBase-root + div,
+.MuiOutlinedInput-root + div,
+/* Additional Chainlit specific selectors */
+div[class*="MuiStack"]:has(.MuiInputBase-root) + div,
+div[class*="MuiBox"]:has(.MuiInputBase-root) + div,
+form > div:has(.MuiInputBase-root) + div,
+/* Target any div that comes after input */
+.MuiInputBase-root ~ div,
+.MuiOutlinedInput-root ~ div {
+  margin-top: 15px !important;
+  gap: 12px !important;
+  padding-top: 10px !important;
+  border-top: 10px solid transparent !important;
+}
+
+/* Send button specific improvements */
+button[data-testid*="send"], 
+button:has(svg[data-testid*="send"]),
+.MuiIconButton-root:has(svg) {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  margin-left: 12px !important;
+  margin-top: 15px !important;
+  padding: 12px !important;
+  min-width: 48px !important;
+  height: 48px !important;
+}
+
+/* Force spacing on any button that could be a send button */
+button[type="submit"],
+.send-button,
+.submit-button,
+form button,
+div:last-child button {
+  margin-top: 15px !important;
+}
+
+/* Input field container improvements */
+.MuiBox-root:has(.MuiInputBase-root) {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 16px 0 !important;
+}
+
+/* Hide theme toggle button completely - Comprehensive selectors */
+button[data-testid*="theme"], 
+button[aria-label*="theme" i], 
+button[title*="theme" i],
+button[aria-label*="Toggle" i],
+button[aria-label*="Switch" i],
+.theme-toggle, .theme-button, .theme-switcher,
+button:has(svg[data-testid*="theme"]),
+button:has(svg[data-testid*="light"]),
+button:has(svg[data-testid*="dark"]),
+.MuiIconButton-root:has(svg[data-testid*="light"]),
+.MuiIconButton-root:has(svg[data-testid*="dark"]),
+.MuiIconButton-root:has(svg[data-testid*="theme"]),
+[data-testid="theme-toggle"],
+[data-testid="light-mode"],
+[data-testid="dark-mode"],
+[data-testid*="theme-button"],
+/* Target Chainlit specific theme toggle patterns */
+.MuiAppBar-root button:has(svg),
+.MuiToolbar-root button:has(svg),
+header button:has(svg),
+/* Hide any sun/moon icons that indicate theme toggle */
+button:has(svg[aria-label*="sun" i]),
+button:has(svg[aria-label*="moon" i]),
+svg[data-testid*="sun"],
+svg[data-testid*="moon"],
+/* Generic toggle button patterns */
+button[class*="toggle"],
+.toggle-button,
+button.toggle {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Explicitly hide the theme toggle by id if present */
+#theme-toggle,
+button[id*="theme-toggle" i],
+button[aria-label*="toggle theme" i],
+button[title*="toggle theme" i],
+button[aria-label*="theme" i] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Ensure all theme variants use dark styling */
+* {
+  color-scheme: dark !important;
+}
+
+/* Force dark theme on all MUI components */
+.MuiCssBaseline-root, .MuiThemeProvider-root {
+  color-scheme: dark !important;
+}
+
+/* Force dark theme in light mode - Override all light theme styling */
+[data-theme="light"], .light, html[data-theme="light"], body[data-theme="light"] {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Light mode header override */
+[data-theme="light"] .MuiAppBar-root,
+[data-theme="light"] header,
+.light .MuiAppBar-root,
+.light header {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Light mode paper and card override */
+[data-theme="light"] .MuiPaper-root,
+[data-theme="light"] .MuiCard-root,
+.light .MuiPaper-root,
+.light .MuiCard-root {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #374151 !important;
+}
+
+/* Light mode typography override */
+[data-theme="light"] .MuiTypography-root,
+[data-theme="light"] p,
+[data-theme="light"] span,
+[data-theme="light"] div,
+.light .MuiTypography-root,
+.light p,
+.light span,
+.light div {
+  color: #f1f5f9 !important;
+}
+
+/* Light mode input override */
+[data-theme="light"] .MuiInputBase-root,
+[data-theme="light"] .MuiOutlinedInput-root,
+.light .MuiInputBase-root,
+.light .MuiOutlinedInput-root {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 2px solid #374151 !important;
+}
+
+/* Light mode button override */
+[data-theme="light"] .MuiButton-root,
+[data-theme="light"] .MuiIconButton-root,
+[data-theme="light"] button,
+.light .MuiButton-root,
+.light .MuiIconButton-root,
+.light button {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+}
+
+/* Light mode message override */
+[data-theme="light"] .step,
+[data-theme="light"] .message,
+.light .step,
+.light .message {
+  background: #1e293b !important;
+  color: #f1f5f9 !important;
+  border: 1px solid #374151 !important;
+}
+
+/* Light mode user message override */
+[data-theme="light"] .step[data-name="user"],
+[data-theme="light"] .message.user,
+.light .step[data-name="user"],
+.light .message.user {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: white !important;
+}
+
+/* Fix edit button alignment in chat messages */
+.step button, .message button, .chat-message button,
+button[data-testid*="edit"], button[title*="edit" i], button[aria-label*="edit" i],
+.edit-button, .message-edit-button {
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  margin: 4px !important;
+  padding: 6px !important;
+  min-width: 32px !important;
+  height: 32px !important;
+  align-self: flex-start !important;
+  vertical-align: top !important;
+}
+
+/* Edit button container alignment */
+.step .MuiBox-root:has(button),
+.message .MuiBox-root:has(button),
+.step div:has(button[data-testid*="edit"]),
+.message div:has(button[data-testid*="edit"]) {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: flex-start !important;
+  margin-top: -8px !important;
+  margin-bottom: 8px !important;
+}
+
+/* Cancel and Confirm button alignment */
+.step .MuiBox-root:has(button[data-testid*="cancel"]),
+.step .MuiBox-root:has(button[data-testid*="confirm"]),
+.message .MuiBox-root:has(button[data-testid*="cancel"]),
+.message .MuiBox-root:has(button[data-testid*="confirm"]),
+div:has(button[data-testid*="cancel"]) + div:has(button[data-testid*="confirm"]),
+div:has(button[aria-label*="cancel" i]),
+div:has(button[aria-label*="confirm" i]),
+div:has(button[title*="cancel" i]),
+div:has(button[title*="confirm" i]) {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+  flex-direction: row !important;
+}
+
+/* Cancel and Confirm buttons specific styling */
+button[data-testid*="cancel"], 
+button[data-testid*="confirm"],
+button[aria-label*="cancel" i],
+button[aria-label*="confirm" i],
+button[title*="cancel" i],
+button[title*="confirm" i],
+.cancel-button, .confirm-button {
+  margin: 0 4px !important;
+  padding: 8px 16px !important;
+  min-width: 70px !important;
+  height: auto !important;
+  display: inline-flex !important;
+}
+
+/* Message content and button layout */
+.step > div, .message > div {
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+}
+
+/* Ensure proper spacing for edit buttons */
+.step button:not([type="submit"]), 
+.message button:not([type="submit"]) {
+  margin-top: 8px !important;
+  margin-left: auto !important;
+}
+
+/* ===========================================
+   EDIT MODE: Cancel / Confirm Alignment Fix
+   =========================================== */
+/* Target Tailwind-like container from inspect: div.flex.justify-end.gap-4 */
+div.flex.justify-end.gap-4 {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  gap: 8px !important; /* tighten spacing */
+  margin-top: 12px !important; /* increased by 4px */
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+/* Reset button auto margins that push cancel to center */
+div.flex.justify-end.gap-4 > button {
+  margin: 0 !important;
+  padding: 0 12px !important;
+  height: 36px !important;
+  min-width: 72px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Specific Cancel button adjustments (first button) */
+div.flex.justify-end.gap-4 > button:first-child {
+  background: rgba(220, 38, 38, 0.06) !important; /* subtle red tint */
+  color: #fecaca !important; /* light red text */
+  border: 1px solid rgba(220, 38, 38, 0.14) !important;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.12s ease !important;
+}
+
+/* Specific Confirm button adjustments (has .confirm-edit) */
+div.flex.justify-end.gap-4 > button.confirm-edit {
+  background: linear-gradient(135deg, var(--cl-color-primary-500), var(--cl-color-primary-600)) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12) !important;
+}
+
+/* Ensure internal spans don't cause extra width */
+div.flex.justify-end.gap-4 > button span {
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Cancel button hover/focus/disabled states */
+div.flex.justify-end.gap-4 > button:first-child:hover {
+  background: rgba(220, 38, 38, 0.12) !important;
+  color: #ffb4b4 !important;
+  transform: translateY(-1px) !important;
+}
+
+div.flex.justify-end.gap-4 > button:first-child:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12) !important;
+}
+
+div.flex.justify-end.gap-4 > button:first-child[disabled],
+div.flex.justify-end.gap-4 > button:first-child.disabled {
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+  background: rgba(220, 38, 38, 0.03) !important;
+}
+
+/* If Tailwind classes are in a different order, target more generically */
+.flex.justify-end > .confirm-edit,
+.flex.justify-end > button {
+  margin-left: 8px !important;
+  margin-top: 4px !important; /* small nudge if class used elsewhere */
+}
+
+/* ===========================================
+   INLINE EDIT BUTTON & MESSAGE BUBBLE CLEANUP
+   =========================================== */
+/* Remove background and border from the inline edit button */
+.edit-message,
+button.edit-message,
+button.edit-message:hover,
+.group:hover .edit-message,
+.group .edit-message {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 4px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #cbd5e1 !important;
+}
+
+/* Ensure hover doesn't apply accent background */
+.edit-message:hover {
+  background: transparent !important;
+  color: #e2e8f0 !important;
+}
+
+/* Remove the gray bubble around messages that use bg-accent and rounded-3xl */
+.bg-accent,
+.bg-accent.rounded-3xl,
+.rounded-3xl.bg-accent,
+.px-5.py-2\.5.relative.bg-accent.rounded-3xl {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+  padding: 12px !important;
+}
+
+/* Keep message text styling intact */
+.prose .leading-7, .message-content .leading-7, .message-content {
+  color: #f1f5f9 !important;
+}
+
+/* If the edit button was hidden/visible based on group hover, preserve visibility but clean background */
+.group:hover .edit-message,
+.group .edit-message.invisible {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
