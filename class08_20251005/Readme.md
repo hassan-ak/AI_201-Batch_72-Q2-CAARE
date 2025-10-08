@@ -3,5 +3,3 @@
 ## Table of Contents
 
 1. [Chainlit Tutorial](./01_chatbot_using_chainlit/)
-
--

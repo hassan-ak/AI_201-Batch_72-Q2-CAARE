@@ -8,5 +8,3 @@
 4. [Streaming](./04_streaming/)
 5. [Cloning an Agent](./05_agent_clone/)
 6. [Getting Started with Chainlit](./06_getting_started_with_chainlit/)
-
--
