@@ -16,7 +16,6 @@ dependencies = [
 
 [project.scripts]
 chatbot = "chatbot:main"
-agent = "agent.main:create_main_agent"
 
 [build-system]
 requires = ["hatchling"]

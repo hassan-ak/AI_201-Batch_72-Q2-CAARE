@@ -1,12 +1,6 @@
 import chainlit as cl
-from rich import print
-from agent.main import create_main_agent
+from agent import create_main_agent
 from agents import Runner, Agent
-from agents.stream_events import (
-    RawResponsesStreamEvent,
-    RunItemStreamEvent,
-    AgentUpdatedStreamEvent,
-)
 from typing import cast
 from openai.types.responses import ResponseTextDeltaEvent
 
