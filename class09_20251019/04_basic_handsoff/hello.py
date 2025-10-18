@@ -7,12 +7,14 @@ from agents import (
     OpenAIChatCompletionsModel,
     AsyncOpenAI,
     set_tracing_disabled,
-    handoff,
 )
+from agents import handoff
 
 # 🌿 Load environment variables
 load_dotenv()
 set_tracing_disabled(disabled=True)
+
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
 
 # 🔐 Setup Gemini client
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -46,9 +48,9 @@ triage = Agent(
         "- If the user asks about refund status or returning an item, hand off to Refunds Agent.\n"
         "Once handed off, the specialist should continue the conversation."
     ),
-    # You can list the agents directly or wrap with handoff(...) for later customization
-    handoffs=[billing_agent, handoff(refunds_agent)],
     model=llm_model,
+    # You can list the agents directly or wrap with handoff(...) for later customization
+    handoffs=[handoff(billing_agent), handoff(refunds_agent)],
 )
 
 

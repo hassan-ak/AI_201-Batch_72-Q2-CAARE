@@ -17,9 +17,9 @@ external_client: AsyncOpenAI = AsyncOpenAI(
 
 # 2. Which LLM Model?
 llm_model: OpenAIChatCompletionsModel = OpenAIChatCompletionsModel(
-    model="gemini-2.5-flash",
-    openai_client=external_client
+    model="gemini-2.5-flash", openai_client=external_client
 )
+
 
 @function_tool
 def get_weather(city: str) -> str:
@@ -31,17 +31,8 @@ base_agent: Agent = Agent(
     name="WeatherAgent",
     instructions="You are a helpful assistant.",
     model=llm_model,
-    tools=[get_weather]
-)
-
-new_agent: Agent = Agent(
-    name="WeatherAgent",
-    instructions="You are a helpful assistant.",
-    model=llm_model,
-    tools=[get_weather]
+    tools=[get_weather],
 )
 
 res = Runner.run_sync(base_agent, "What's the weather in Karachi?")
 print(res)
-
-# Now check the trace in 

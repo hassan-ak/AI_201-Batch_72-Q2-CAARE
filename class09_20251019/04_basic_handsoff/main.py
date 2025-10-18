@@ -1,20 +1,30 @@
 import os
 import asyncio
 from dotenv import load_dotenv
-from agents import Agent, Runner, OpenAIChatCompletionsModel, AsyncOpenAI, handoff, set_tracing_disabled, ModelSettings, function_tool
+from agents import (
+    Agent,
+    Runner,
+    OpenAIChatCompletionsModel,
+    AsyncOpenAI,
+    set_tracing_disabled,
+)
 
 # 🌿 Load environment variables
 load_dotenv()
 set_tracing_disabled(disabled=True)
+
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
 
 # 🔐 Setup Gemini client
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 
 external_client = AsyncOpenAI(api_key=GEMINI_API_KEY, base_url=BASE_URL)
-llm_model = OpenAIChatCompletionsModel(model="gemini-2.5-flash", openai_client=external_client)
+llm_model = OpenAIChatCompletionsModel(
+    model="gemini-2.5-flash", openai_client=external_client
+)
 
-# Fitness Coach 
+# Fitness Coach
 fitness_coach = Agent(
     name="Fitness Coach",
     instructions=(
@@ -32,7 +42,6 @@ study_coach = Agent(
         "Keep steps small and doable."
     ),
     model=llm_model,
-    
 )
 
 # Router that decides who should OWN the conversation
@@ -44,10 +53,10 @@ router = Agent(
         "- If it's about exams, study plan, focus, notes → handoff to Study Coach.\n"
         "After handoff, the specialist should continue the conversation."
     ),
-    handoffs=[study_coach, handoff(fitness_coach)],
+    handoffs=[study_coach, fitness_coach],
     model=llm_model,
-    
 )
+
 
 async def main():
     # ---- Turn 1: user asks about running → should handoff to Fitness Coach
