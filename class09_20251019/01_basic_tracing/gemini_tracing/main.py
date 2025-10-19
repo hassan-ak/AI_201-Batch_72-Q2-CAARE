@@ -1,11 +1,12 @@
 import os
 from dotenv import load_dotenv, find_dotenv
-from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel, function_tool
+from agents import Agent, Runner, AsyncOpenAI, OpenAIChatCompletionsModel, function_tool, set_tracing_disabled
 
+set_tracing_disabled(True)
 _: bool = load_dotenv(find_dotenv())
 
-# ONLY FOR TRACING
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
+# # ONLY FOR TRACING
+# os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY", "")
 
 gemini_api_key: str = os.getenv("GEMINI_API_KEY", "")
 
@@ -35,4 +36,4 @@ base_agent: Agent = Agent(
 )
 
 res = Runner.run_sync(base_agent, "What's the weather in Karachi?")
-print(res)
+print(res.new_items)

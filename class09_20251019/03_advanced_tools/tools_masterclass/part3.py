@@ -39,7 +39,7 @@ def get_weather(city: str) -> str:
 base_agent: Agent = Agent(name="WeatherAgent", model=llm_model, tools=[get_weather])
 
 async def main():
-    abdul_scope = UserScope(is_admin=True)
+    abdul_scope = UserScope(is_admin=False)
     res = await Runner.run(base_agent, "What is weather in Lahore", context=abdul_scope)
     print(res.final_output)
 

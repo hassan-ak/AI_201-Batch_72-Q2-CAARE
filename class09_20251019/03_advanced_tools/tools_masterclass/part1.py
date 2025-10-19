@@ -44,9 +44,9 @@ base_agent: Agent = Agent(
     # tool_use_behavior="stop_on_first_tool"
 )
 
-# res = Runner.run_sync(base_agent, "What is weather in Lahore")
+res = Runner.run_sync(base_agent, "What is weather in Lahore")
 # res = Runner.run_sync(base_agent, "Make me travel plan for Lahore")
-res = Runner.run_sync(base_agent, "What is weather in Lahore and make me travel plan for Lahore")
+# res = Runner.run_sync(base_agent, "What is weather in Lahore and make me travel plan for Lahore")
 
 print(res.final_output)
 

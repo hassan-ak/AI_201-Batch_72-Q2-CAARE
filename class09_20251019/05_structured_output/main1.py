@@ -23,19 +23,20 @@ class PersonInfo(BaseModel):
     name: str
     age: int
     occupation: str
+    email: str | None = None  # Optional field
 
 # Create agent with structured output
 agent = Agent(
     name="InfoCollector",
     instructions="Extract person information from the user's message.",
-    output_type=PersonInfo,  # This is the magic!
+    output_type=PersonInfo,  
     model=llm_model
 )
 
 async def main():
     result = await Runner.run(
         agent,
-        "Hi, I'm Alice, I'm 25 years old and I work as a teacher."
+        "Hi, I'm Alice, I'm 25 years old, lives in lahore and I work as a teacher."
     )
 
     # Now you get perfect structured data!
