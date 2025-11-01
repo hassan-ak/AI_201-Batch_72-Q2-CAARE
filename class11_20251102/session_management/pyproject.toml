@@ -1,0 +1,28 @@
+[project]
+name = "session-management"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jahanzaib Tayyab", email = "jtayyab204@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "aiosqlite>=0.21.0",
+    "asyncpg>=0.30.0",
+    "greenlet>=3.2.4",
+    "openai-agents[sqlalchemy]>=0.4.2",
+    "python-dotenv>=1.2.1",
+    "rich>=14.2.0",
+]
+
+[project.scripts]
+session-management = "session_management:main"
+sqlite-session = "session_management.sqlite_session.main:main"
+sqlalchemy-session = "session_management.sqlalchemy_session.main:main"
+advanced-sqlite-session = "session_management.advanced_sqlite_session.main:main"
+encrypted-session = "session_management.encrypted_session.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
