@@ -31,6 +31,7 @@ _required = [
     "GEMINI_API_KEY",
     "GEMINI_API_URL",
     "GEMINI_API_MODEL",
+    "POSTGRESQL_URL",
 ]
 
 _missing = [k for k in _required if not os.getenv(k)]
@@ -43,7 +44,7 @@ class Config:
     gemini_api_key: str = os.getenv(_required[0])
     gemini_api_url: str = os.getenv(_required[1])
     gemini_api_model: str = os.getenv(_required[2])
-    
+    postgresql_url: str = os.getenv(_required[3])
     # # Optional: PostgreSQL connection string (for SQLAlchemy session demo)
     # postgresql_url: str | None = os.getenv("POSTGRESQL_URL")
     

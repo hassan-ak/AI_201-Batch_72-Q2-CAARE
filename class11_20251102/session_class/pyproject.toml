@@ -8,13 +8,16 @@ authors = [
 ]
 requires-python = ">=3.11"
 dependencies = [
-    "openai-agents>=0.4.2",
+    "greenlet>=3.2.4",
+    "openai-agents[sqlalchemy]>=0.4.2",
+    "psycopg2>=2.9.11",
     "python-dotenv>=1.2.1",
     "rich>=14.2.0",
 ]
 
 [project.scripts]
 session-class = "session_class:main"
+session-pg="session_class.pg_session:main"
 
 [build-system]
 requires = ["hatchling"]
