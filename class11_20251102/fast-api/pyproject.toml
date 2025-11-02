@@ -7,7 +7,14 @@ authors = [
     { name = "Jahanzaib Tayyab", email = "jtayyab204@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "asyncpg>=0.30.0",
+    "python-dotenv>=1.2.1",
+    "openai-agents[sqlalchemy]>=0.4.2",
+    "greenlet>=3.2.4",
+]
 
 [project.scripts]
 fast-api = "fast_api:main"
