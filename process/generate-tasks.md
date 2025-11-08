@@ -21,7 +21,38 @@ To guide an AI assistant in creating a detailed, step-by-step task list in Markd
 7.  **Identify Relevant Files:** Based on the tasks and PRD, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
 8.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
 9.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[prd-file-name].md`, where `[prd-file-name]` matches the base name of the input PRD file (e.g., if the input was `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`).
-10. Generate Task in Jira as well
+10. **Generate Tasks in Jira:**
+    - **Check Jira MCP Availability:** First, check if Jira MCP (Model Context Protocol) is available by attempting to access Jira-related tools or checking available MCP resources.
+    - **Connect to Jira:** If Jira MCP is available, connect to Jira by:
+      - Getting accessible Atlassian resources using `getAccessibleAtlassianResources`
+      - Retrieving user information to verify connection using `atlassianUserInfo`
+      - Getting visible Jira projects using `getVisibleJiraProjects` with the appropriate cloud ID
+    - **Determine Issue Type:** Based on the scope and complexity of the PRD:
+      - Use **Epic** if the feature is large, spans multiple sprints, or contains multiple major components
+      - Use **Story** if the feature is a single, cohesive user-facing feature that can be completed in one sprint
+      - Generally, if there are 5+ parent tasks or the feature is substantial, prefer Epic; otherwise, use Story
+    - **Create Main Issue (Epic or Story):**
+      - Create the main issue using `createJiraIssue` with:
+        - Appropriate issue type (Epic or Story)
+        - Summary: Brief feature name from PRD
+        - Description: Include PRD overview, goals, key features, and link to the task list file
+        - Reference the PRD and task list files in the description
+    - **Create Sub-Tasks for Each Parent Task:**
+      - For each parent task (e.g., 1.0, 2.0, 3.0), create a sub-task using `createJiraIssue`:
+        - Issue type: **Subtask**
+        - Parent issue key: Use the `parentIssueKey` parameter with the key of the main Epic/Story created above (e.g., "SCRUM-6")
+        - Summary: Parent task title (e.g., "1.0 Project Setup & Dependencies")
+        - Description: Include the parent task description and list all sub-tasks (1.1, 1.2, etc.) as a checklist in markdown format
+        - Link to the relevant section in the task list markdown file
+        - Note: Each parent task from the markdown task list becomes one Jira sub-task, with all its sub-tasks (1.1, 1.2, etc.) listed as a checklist in the description
+    - **Link and Organize:**
+      - Ensure all sub-tasks are properly linked to the parent Epic/Story
+      - Add the Jira issue key(s) to the task list markdown file for reference
+      - Update the task list with Jira links if possible
+    - **If Jira MCP is Not Available:**
+      - Inform the user that Jira integration is not available
+      - Suggest manual creation of Jira issues using the task list as a guide
+      - Provide a summary of what should be created (main Epic/Story and sub-tasks for each parent task)
 
 ## Output Format
 
