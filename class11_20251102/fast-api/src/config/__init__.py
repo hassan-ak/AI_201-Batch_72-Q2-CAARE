@@ -31,6 +31,8 @@ _required = [
     "GEMINI_API_KEY",
     "GEMINI_API_URL",
     "GEMINI_API_MODEL",
+    "DATABASE_URL",
+    "API_KEY",
 ]
 
 _missing = [k for k in _required if not os.getenv(k)]
@@ -42,8 +44,11 @@ class Config:
     gemini_api_key: str = os.getenv(_required[0])
     gemini_api_url: str = os.getenv(_required[1])
     gemini_api_model: str = os.getenv(_required[2])
+    database_url: str = os.getenv(_required[3])
+    api_key: str = os.getenv(_required[4])
     
     # Optional: PostgreSQL connection string (for SQLAlchemy session demo)
+    # Kept for backward compatibility, but database_url should be used
     postgresql_url: str | None = os.getenv("POSTGRESQL_URL")
     
     @classmethod
@@ -54,10 +59,12 @@ class Config:
         Converts: postgresql://user:pass@host/db?sslmode=require
         To: postgresql+asyncpg://user:pass@host/db (with SSL in connect_args)
         
+        Uses DATABASE_URL if available, falls back to POSTGRESQL_URL for backward compatibility.
+        
         Returns:
             Tuple of (async_url, connect_args_dict)
         """
-        url = cls.postgresql_url
+        url = cls.database_url or cls.postgresql_url
         if not url:
             return None, {}
         
