@@ -23,22 +23,26 @@ A production-ready REST API for chatbot interactions with session persistence, b
 ### Installation
 
 1. **Clone and navigate to the project:**
+
    ```bash
    cd class11_20251102/fast-api
    ```
 
 2. **Install dependencies:**
+
    ```bash
    uv sync
    ```
 
 3. **Set up environment variables:**
+
    ```bash
    cp .env.example .env
    # Edit .env with your actual values
    ```
 
 4. **Required environment variables:**
+
    ```env
    GEMINI_API_KEY=your_gemini_api_key_here
    GEMINI_API_URL=https://generativelanguage.googleapis.com/v1beta/openai/
@@ -66,6 +70,7 @@ Once the server is running, access the interactive API documentation:
 All protected endpoints require API key authentication. You can provide the API key in two ways:
 
 1. **X-API-Key header:**
+
    ```bash
    curl -H "X-API-Key: your_api_key" http://localhost:8000/sessions
    ```
@@ -80,9 +85,11 @@ All protected endpoints require API key authentication. You can provide the API 
 ### Health Check (Unprotected)
 
 #### `GET /`
+
 Returns API status.
 
 **Response:**
+
 ```json
 {
   "status": "ok",
@@ -91,9 +98,11 @@ Returns API status.
 ```
 
 #### `GET /health`
+
 Health check endpoint.
 
 **Response:**
+
 ```json
 {
   "status": "healthy"
@@ -103,9 +112,11 @@ Health check endpoint.
 ### Session Management
 
 #### `POST /sessions`
+
 Create a new conversation session.
 
 **Request Body:**
+
 ```json
 {
   "user_id": "user_123",
@@ -114,6 +125,7 @@ Create a new conversation session.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -129,9 +141,11 @@ Create a new conversation session.
 ```
 
 #### `GET /sessions/{session_id}`
+
 Get session information.
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -144,9 +158,11 @@ Get session information.
 ```
 
 #### `GET /sessions`
+
 List all sessions (simplified implementation).
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -160,9 +176,11 @@ List all sessions (simplified implementation).
 ### Messages
 
 #### `POST /sessions/{session_id}/messages`
+
 Send a message to the agent.
 
 **Request Body:**
+
 ```json
 {
   "message": "Hello, how can you help me?"
@@ -170,6 +188,7 @@ Send a message to the agent.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -183,9 +202,11 @@ Send a message to the agent.
 ```
 
 #### `GET /sessions/{session_id}/messages`
+
 Get conversation history.
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -342,4 +363,3 @@ Tables are automatically created on first use (`create_tables=True`).
 ## License
 
 This project is part of the AI_201-Batch_72-Q2-CAARE-1 course materials.
-
