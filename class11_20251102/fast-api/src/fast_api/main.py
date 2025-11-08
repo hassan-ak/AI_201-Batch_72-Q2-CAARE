@@ -3,6 +3,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fast_api.services.session import SessionService
+from fast_api.routes import sessions, messages
 
 
 @asynccontextmanager
@@ -23,15 +24,19 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Include routers
+app.include_router(sessions.router)
+app.include_router(messages.router)
 
-@app.get("/")
+
+@app.get("/", tags=["health"])
 async def root():
-    """Root endpoint - returns API status."""
+    """Root endpoint - returns API status (unprotected)."""
     return {"status": "ok", "message": "FastAPI Chatbot API is running"}
 
 
-@app.get("/health")
+@app.get("/health", tags=["health"])
 async def health():
-    """Health check endpoint."""
+    """Health check endpoint (unprotected)."""
     return {"status": "healthy"}
 
